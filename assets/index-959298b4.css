@@ -56,3 +56,6 @@ img[src*="naveen.jpeg"] {
 img[src*="rennees.jpeg"] {
     object-position: center center !important;
 }
+
+/* Temporarily hide Event Journey section */
+._events_e3as0_1 { display: none !important; }
