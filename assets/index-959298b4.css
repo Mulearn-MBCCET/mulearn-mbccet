@@ -3,55 +3,55 @@
 
 /* Custom Per-Person Face Alignment Rules */
 img[src*="priyanka.jpeg"] {
-    object-position: center 85% !important;
+    object-position: center center !important;
 }
 img[src*="niranjana.jpeg"] {
-    object-position: center 10% !important;
+    object-position: center center !important;
 }
 img[src*="ansiya.jpeg"] {
-    object-position: center 10% !important;
+    object-position: center center !important;
 }
 img[src*="geethu.jpeg"] {
     object-position: center center !important;
 }
 img[src*="jini.jpeg"] {
-    object-position: center 20% !important;
+    object-position: center center !important;
 }
 img[src*="joyanna.jpeg"] {
-    object-position: center 20% !important;
+    object-position: center center !important;
 }
 img[src*="irin.jpeg"] {
-    object-position: center 20% !important;
+    object-position: center center !important;
 }
 img[src*="abin.jpeg"] {
-    object-position: center 20% !important;
+    object-position: center center !important;
 }
 img[src*="adwaith.jpeg"] {
-    object-position: center 20% !important;
+    object-position: center center !important;
 }
 img[src*="reuben.jpeg"] {
-    object-position: center 20% !important;
+    object-position: center center !important;
 }
 img[src*="anandhu.jpeg"] {
-    object-position: center 20% !important;
+    object-position: center center !important;
 }
 img[src*="gayathri.jpeg"] {
-    object-position: center 20% !important;
+    object-position: center center !important;
 }
 img[src*="jubit.jpeg"] {
-    object-position: center 20% !important;
+    object-position: center center !important;
 }
 img[src*="ann_mary.jpeg"] {
-    object-position: center 20% !important;
+    object-position: center center !important;
 }
 img[src*="nelphy.jpeg"] {
-    object-position: center 20% !important;
+    object-position: center center !important;
 }
 img[src*="iwin.jpeg"] {
-    object-position: center 20% !important;
+    object-position: center center !important;
 }
 img[src*="naveen.jpeg"] {
-    object-position: center 20% !important;
+    object-position: center center !important;
 }
 img[src*="rennees.jpeg"] {
     object-position: center center !important;
