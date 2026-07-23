@@ -74,7 +74,25 @@
     <script src="https://elfsightcdn.com/platform.js" async></script>
     <div class="elfsight-app-6c505118-d8fd-4d95-9582-f07055906939"
          data-elfsight-app-lazy></div>
-    
+    <script>
+(function () {
+  function moveWidgetAboveFooter() {
+    var widget = document.querySelector('.elfsight-app-6c505118-d8fd-4d95-9582-f07055906939');
+    var footer = document.querySelector('[class*="FooterWrapper"]');
+    if (widget && footer && footer.previousElementSibling !== widget) {
+      footer.parentNode.insertBefore(widget, footer);
+      return true;
+    }
+    return false;
+  }
+  if (!moveWidgetAboveFooter()) {
+    var observer = new MutationObserver(function () {
+      if (moveWidgetAboveFooter()) observer.disconnect();
+    });
+    observer.observe(document.getElementById('root'), { childList: true, subtree: true });
+  }
+})();
+</script>
 </body>
 
 </html>
