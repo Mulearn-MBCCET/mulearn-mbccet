@@ -180,489 +180,493 @@ Please change the parent <Route path="${m}"> to <Route path="${m === "/" ? "*" :
     description: "Hearty congratulations to Reuben Sam Philip on being appointed as the new District Lead of µLearn at Idukki district! Proud moment for Mar Baselios Christian College of Engineering & Technology."
   }
 ],
-$0 = "_gallery_kys51_1", F0 = "_row_kys51_12", O0 = "_imgContainer_kys51_16", Di = { gallery: $0, row: F0, imgContainer: O0 }, A0 = () => {
-  const [selectedPost, setSelectedPost] = v.useState(null);
-  const [filter, setFilter] = v.useState("All");
+  $0 = "_gallery_kys51_1", F0 = "_row_kys51_12", O0 = "_imgContainer_kys51_16", Di = { gallery: $0, row: F0, imgContainer: O0 }, A0 = () => {
+    const [selectedPost, setSelectedPost] = v.useState(null);
+    const [filter, setFilter] = v.useState("All");
 
-  const categories = ["All", "Announcement", "Workshop", "Achievement", "Farewell"];
-  const filteredPosts = filter === "All" ? memoryPosts : memoryPosts.filter(p => p.category === filter);
-  const marqueeConfig = { autoFill: true, pauseOnHover: true, speed: 60 };
+    const categories = ["All", "Announcement", "Workshop", "Achievement", "Farewell"];
+    const filteredPosts = filter === "All" ? memoryPosts : memoryPosts.filter(p => p.category === filter);
+    const marqueeConfig = { autoFill: true, pauseOnHover: true, speed: 60 };
 
-  const handlePrev = (e) => {
-    if (e) e.stopPropagation();
-    if (!selectedPost) return;
-    const currentIndex = memoryPosts.findIndex(p => p.id === selectedPost.id);
-    const prevIndex = (currentIndex - 1 + memoryPosts.length) % memoryPosts.length;
-    setSelectedPost(memoryPosts[prevIndex]);
-  };
-
-  const handleNext = (e) => {
-    if (e) e.stopPropagation();
-    if (!selectedPost) return;
-    const currentIndex = memoryPosts.findIndex(p => p.id === selectedPost.id);
-    const nextIndex = (currentIndex + 1) % memoryPosts.length;
-    setSelectedPost(memoryPosts[nextIndex]);
-  };
-
-  v.useEffect(() => {
-    const handleKeyDown = (e) => {
+    const handlePrev = (e) => {
+      if (e) e.stopPropagation();
       if (!selectedPost) return;
-      if (e.key === "Escape") setSelectedPost(null);
-      if (e.key === "ArrowLeft") handlePrev();
-      if (e.key === "ArrowRight") handleNext();
+      const currentIndex = memoryPosts.findIndex(p => p.id === selectedPost.id);
+      const prevIndex = (currentIndex - 1 + memoryPosts.length) % memoryPosts.length;
+      setSelectedPost(memoryPosts[prevIndex]);
     };
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [selectedPost]);
 
-  return u.jsxs("div", {
-    className: Di.gallery,
-    id: "gallery",
-    style: { display: "flex", flexDirection: "column", alignItems: "center", width: "100%", padding: "40px 0 60px" },
-    children: [
-      u.jsx("h2", { style: { color: "#ae59ff", fontSize: "35px", textAlign: "center", marginBottom: "8px" }, children: "Memories & Highlights" }),
-      u.jsx("p", { style: { color: "#555", fontSize: "16px", textAlign: "center", marginBottom: "25px", maxWidth: "600px" }, children: "Explore our event posters, workshop announcements, and milestone achievements. Click any post for full view." }),
+    const handleNext = (e) => {
+      if (e) e.stopPropagation();
+      if (!selectedPost) return;
+      const currentIndex = memoryPosts.findIndex(p => p.id === selectedPost.id);
+      const nextIndex = (currentIndex + 1) % memoryPosts.length;
+      setSelectedPost(memoryPosts[nextIndex]);
+    };
 
-      /* Filter Buttons */
-      u.jsx("div", {
-        style: { display: "flex", gap: "10px", flexWrap: "wrap", justifyContent: "center", marginBottom: "30px", padding: "0 15px" },
-        children: categories.map(cat => u.jsx("button", {
-          onClick: () => setFilter(cat),
-          style: {
-            padding: "8px 18px",
-            borderRadius: "20px",
-            border: filter === cat ? "none" : "1px solid #ae59ff",
-            background: filter === cat ? "linear-gradient(135deg, #ae59ff, #8a2be2)" : "#fff",
-            color: filter === cat ? "#fff" : "#ae59ff",
-            fontWeight: 600,
-            fontSize: "14px",
-            cursor: "pointer",
-            boxShadow: filter === cat ? "0 4px 12px rgba(174, 89, 255, 0.3)" : "none",
-            transition: "all 0.2s ease"
-          },
-          children: cat
-        }, cat))
-      }),
+    v.useEffect(() => {
+      const handleKeyDown = (e) => {
+        if (!selectedPost) return;
+        if (e.key === "Escape") setSelectedPost(null);
+        if (e.key === "ArrowLeft") handlePrev();
+        if (e.key === "ArrowRight") handleNext();
+      };
+      window.addEventListener("keydown", handleKeyDown);
+      return () => window.removeEventListener("keydown", handleKeyDown);
+    }, [selectedPost]);
 
-      /* Marquee Row */
-      u.jsx("div", {
-        className: Di.row,
-        style: { width: "100%", overflow: "hidden" },
-        children: u.jsx(D0, {
-          ...marqueeConfig,
-          style: { width: "100vw" },
-          children: filteredPosts.map(post => u.jsxs("div", {
-            onClick: () => setSelectedPost(post),
+    return u.jsxs("div", {
+      className: Di.gallery,
+      id: "gallery",
+      style: { display: "flex", flexDirection: "column", alignItems: "center", width: "100%", padding: "40px 0 60px" },
+      children: [
+        u.jsx("h2", { style: { color: "#ae59ff", fontSize: "35px", textAlign: "center", marginBottom: "8px" }, children: "Memories & Highlights" }),
+        u.jsx("p", { style: { color: "#555", fontSize: "16px", textAlign: "center", marginBottom: "25px", maxWidth: "600px" }, children: "Explore our event posters, workshop announcements, and milestone achievements. Click any post for full view." }),
+
+        /* Filter Buttons */
+        u.jsx("div", {
+          style: { display: "flex", gap: "10px", flexWrap: "wrap", justifyContent: "center", marginBottom: "30px", padding: "0 15px" },
+          children: categories.map(cat => u.jsx("button", {
+            onClick: () => setFilter(cat),
             style: {
-              height: "360px",
-              width: "280px",
-              margin: "0 14px",
-              padding: "12px",
-              background: "#ffffff",
-              borderRadius: "18px",
-              boxShadow: "0 8px 24px rgba(174, 89, 255, 0.12)",
-              border: "1px solid rgba(174, 89, 255, 0.2)",
-              display: "flex",
-              flexDirection: "column",
+              padding: "8px 18px",
+              borderRadius: "20px",
+              border: filter === cat ? "none" : "1px solid #ae59ff",
+              background: filter === cat ? "linear-gradient(135deg, #ae59ff, #8a2be2)" : "#fff",
+              color: filter === cat ? "#fff" : "#ae59ff",
+              fontWeight: 600,
+              fontSize: "14px",
               cursor: "pointer",
-              transition: "transform 0.25s ease, box-shadow 0.25s ease",
-              position: "relative"
+              boxShadow: filter === cat ? "0 4px 12px rgba(174, 89, 255, 0.3)" : "none",
+              transition: "all 0.2s ease"
+            },
+            children: cat
+          }, cat))
+        }),
+
+        /* Marquee Row */
+        u.jsx("div", {
+          className: Di.row,
+          style: { width: "100%", overflow: "hidden" },
+          children: u.jsx(D0, {
+            ...marqueeConfig,
+            style: { width: "100vw" },
+            children: filteredPosts.map(post => u.jsxs("div", {
+              onClick: () => setSelectedPost(post),
+              style: {
+                height: "360px",
+                width: "280px",
+                margin: "0 14px",
+                padding: "12px",
+                background: "#ffffff",
+                borderRadius: "18px",
+                boxShadow: "0 8px 24px rgba(174, 89, 255, 0.12)",
+                border: "1px solid rgba(174, 89, 255, 0.2)",
+                display: "flex",
+                flexDirection: "column",
+                cursor: "pointer",
+                transition: "transform 0.25s ease, box-shadow 0.25s ease",
+                position: "relative"
+              },
+              children: [
+                u.jsxs("div", {
+                  style: { width: "100%", height: "250px", borderRadius: "12px", overflow: "hidden", position: "relative", background: "#0d0a1a" },
+                  children: [
+                    u.jsx("img", { src: post.image, loading: "lazy", style: { width: "100%", height: "100%", objectFit: "contain", background: "#0d0a1a" } }),
+                    u.jsx("span", {
+                      style: {
+                        position: "absolute",
+                        top: "8px",
+                        right: "8px",
+                        background: "rgba(174, 89, 255, 0.95)",
+                        color: "#fff",
+                        fontSize: "11px",
+                        fontWeight: 700,
+                        padding: "4px 10px",
+                        borderRadius: "12px",
+                        boxShadow: "0 2px 8px rgba(0,0,0,0.2)"
+                      },
+                      children: post.category
+                    })
+                  ]
+                }),
+                u.jsxs("div", {
+                  style: { marginTop: "12px", display: "flex", flexDirection: "column", gap: "6px" },
+                  children: [
+                    u.jsx("h4", { style: { fontSize: "14px", fontWeight: 700, color: "#1a1a1a", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }, children: post.title }),
+                    u.jsxs("div", {
+                      style: { display: "flex", justifyContent: "space-between", alignItems: "center", fontSize: "12px", color: "#ae59ff", fontWeight: 600 },
+                      children: [
+                        u.jsx("span", { style: { color: "#666" }, children: post.date }),
+                        u.jsx("span", { style: { background: "#f3e8ff", padding: "3px 8px", borderRadius: "8px" }, children: "Read Post 🔍" })
+                      ]
+                    })
+                  ]
+                })
+              ]
+            }, post.id))
+          })
+        }),
+
+        /* Full View Modal */
+        selectedPost ? u.jsx("div", {
+          style: {
+            position: "fixed",
+            inset: 0,
+            zIndex: 99999,
+            background: "rgba(10, 10, 25, 0.88)",
+            backdropFilter: "blur(12px)",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            padding: "20px"
+          },
+          onClick: (e) => { if (e.target === e.currentTarget) setSelectedPost(null); },
+          children: u.jsxs("div", {
+            style: {
+              background: "#ffffff",
+              borderRadius: "24px",
+              maxWidth: "960px",
+              width: "100%",
+              maxHeight: "92vh",
+              overflowY: "auto",
+              boxShadow: "0 25px 60px -12px rgba(0, 0, 0, 0.6)",
+              position: "relative",
+              display: "flex",
+              flexDirection: "row",
+              flexWrap: "wrap",
+              border: "1px solid rgba(174, 89, 255, 0.3)"
             },
             children: [
-              u.jsxs("div", {
-                style: { width: "100%", height: "250px", borderRadius: "12px", overflow: "hidden", position: "relative", background: "#0d0a1a" },
-                children: [
-                  u.jsx("img", { src: post.image, loading: "lazy", style: { width: "100%", height: "100%", objectFit: "contain", background: "#0d0a1a" } }),
-                  u.jsx("span", {
-                    style: {
-                      position: "absolute",
-                      top: "8px",
-                      right: "8px",
-                      background: "rgba(174, 89, 255, 0.95)",
-                      color: "#fff",
-                      fontSize: "11px",
-                      fontWeight: 700,
-                      padding: "4px 10px",
-                      borderRadius: "12px",
-                      boxShadow: "0 2px 8px rgba(0,0,0,0.2)"
-                    },
-                    children: post.category
-                  })
-                ]
+              /* Close Button */
+              u.jsx("button", {
+                onClick: () => setSelectedPost(null),
+                style: {
+                  position: "absolute",
+                  top: "15px",
+                  right: "15px",
+                  background: "rgba(0, 0, 0, 0.7)",
+                  color: "#fff",
+                  border: "none",
+                  borderRadius: "50%",
+                  width: "38px",
+                  height: "38px",
+                  fontSize: "20px",
+                  cursor: "pointer",
+                  zIndex: 20,
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  boxShadow: "0 2px 10px rgba(0,0,0,0.3)"
+                },
+                children: "✕"
               }),
+
+              /* Navigation Arrows */
+              u.jsx("button", {
+                onClick: handlePrev,
+                style: {
+                  position: "absolute",
+                  left: "15px",
+                  top: "50%",
+                  transform: "translateY(-50%)",
+                  background: "rgba(174, 89, 255, 0.9)",
+                  color: "#fff",
+                  border: "none",
+                  borderRadius: "50%",
+                  width: "44px",
+                  height: "44px",
+                  fontSize: "24px",
+                  fontWeight: "bold",
+                  cursor: "pointer",
+                  zIndex: 20,
+                  boxShadow: "0 4px 14px rgba(0,0,0,0.3)",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center"
+                },
+                children: "‹"
+              }),
+              u.jsx("button", {
+                onClick: handleNext,
+                style: {
+                  position: "absolute",
+                  right: "15px",
+                  top: "50%",
+                  transform: "translateY(-50%)",
+                  background: "rgba(174, 89, 255, 0.9)",
+                  color: "#fff",
+                  border: "none",
+                  borderRadius: "50%",
+                  width: "44px",
+                  height: "44px",
+                  fontSize: "24px",
+                  fontWeight: "bold",
+                  cursor: "pointer",
+                  zIndex: 20,
+                  boxShadow: "0 4px 14px rgba(0,0,0,0.3)",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center"
+                },
+                children: "›"
+              }),
+
+              /* Left Side: Full Poster Image */
+              u.jsx("div", {
+                style: {
+                  flex: "1 1 420px",
+                  background: "#080614",
+                  padding: "24px",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  borderTopLeftRadius: "24px",
+                  borderBottomLeftRadius: "24px",
+                  minHeight: "420px"
+                },
+                children: u.jsx("img", {
+                  src: selectedPost.image,
+                  alt: selectedPost.title,
+                  style: {
+                    maxWidth: "100%",
+                    maxHeight: "75vh",
+                    objectFit: "contain",
+                    borderRadius: "14px",
+                    boxShadow: "0 12px 35px rgba(0,0,0,0.6)"
+                  }
+                })
+              }),
+
+              /* Right Side: Read Details */
               u.jsxs("div", {
-                style: { marginTop: "12px", display: "flex", flexDirection: "column", gap: "6px" },
+                style: {
+                  flex: "1 1 380px",
+                  padding: "35px 30px 30px",
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "space-between",
+                  background: "#ffffff",
+                  borderTopRightRadius: "24px",
+                  borderBottomRightRadius: "24px"
+                },
                 children: [
-                  u.jsx("h4", { style: { fontSize: "14px", fontWeight: 700, color: "#1a1a1a", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }, children: post.title }),
                   u.jsxs("div", {
-                    style: { display: "flex", justifyContent: "space-between", alignItems: "center", fontSize: "12px", color: "#ae59ff", fontWeight: 600 },
                     children: [
-                      u.jsx("span", { style: { color: "#666" }, children: post.date }),
-                      u.jsx("span", { style: { background: "#f3e8ff", padding: "3px 8px", borderRadius: "8px" }, children: "Read Post 🔍" })
+                      /* Header Tag & Date */
+                      u.jsxs("div", {
+                        style: { display: "flex", alignItems: "center", gap: "10px", marginBottom: "14px" },
+                        children: [
+                          u.jsx("span", {
+                            style: {
+                              background: "linear-gradient(135deg, #ae59ff, #8a2be2)",
+                              color: "#fff",
+                              fontSize: "12px",
+                              fontWeight: 700,
+                              padding: "4px 14px",
+                              borderRadius: "16px",
+                              boxShadow: "0 2px 8px rgba(174, 89, 255, 0.25)"
+                            },
+                            children: selectedPost.category
+                          }),
+                          u.jsx("span", { style: { fontSize: "13px", color: "#666", fontWeight: 600 }, children: selectedPost.date })
+                        ]
+                      }),
+
+                      /* Title */
+                      u.jsx("h3", { style: { fontSize: "1.5rem", fontWeight: 800, color: "#111", lineHeight: 1.3, marginBottom: "16px" }, children: selectedPost.title }),
+
+                      /* Metadata List */
+                      u.jsxs("div", {
+                        style: { display: "flex", flexDirection: "column", gap: "8px", marginBottom: "20px", fontSize: "14px", color: "#444" },
+                        children: [
+                          selectedPost.time ? u.jsxs("div", { style: { display: "flex", gap: "6px" }, children: [u.jsx("span", { style: { fontWeight: 700, color: "#ae59ff" }, children: "⏰ Time:" }), selectedPost.time] }) : null,
+                          selectedPost.venue ? u.jsxs("div", { style: { display: "flex", gap: "6px" }, children: [u.jsx("span", { style: { fontWeight: 700, color: "#ae59ff" }, children: "📍 Venue:" }), selectedPost.venue] }) : null,
+                          selectedPost.speaker ? u.jsxs("div", { style: { display: "flex", gap: "6px" }, children: [u.jsx("span", { style: { fontWeight: 700, color: "#ae59ff" }, children: "🎤 Speaker:" }), selectedPost.speaker] }) : null
+                        ]
+                      }),
+
+                      /* Description Box */
+                      u.jsx("div", {
+                        style: {
+                          fontSize: "14px",
+                          lineHeight: 1.6,
+                          color: "#2d2d2d",
+                          background: "#f8f5ff",
+                          padding: "16px",
+                          borderRadius: "14px",
+                          borderLeft: "4px solid #ae59ff"
+                        },
+                        children: selectedPost.description
+                      })
+                    ]
+                  }),
+
+                  /* Action Footer */
+                  u.jsxs("div", {
+                    style: { display: "flex", gap: "12px", marginTop: "25px", flexWrap: "wrap" },
+                    children: [
+                      u.jsx("a", {
+                        href: selectedPost.image,
+                        target: "_blank",
+                        rel: "noopener noreferrer",
+                        style: {
+                          flex: 1,
+                          padding: "12px 18px",
+                          borderRadius: "12px",
+                          background: "linear-gradient(135deg, #ae59ff, #8a2be2)",
+                          color: "#fff",
+                          fontWeight: 700,
+                          fontSize: "14px",
+                          textAlign: "center",
+                          textDecoration: "none",
+                          boxShadow: "0 4px 12px rgba(174, 89, 255, 0.3)"
+                        },
+                        children: "🔍 Open Full Image"
+                      }),
+                      u.jsx("a", {
+                        href: selectedPost.image,
+                        download: "mulearn-post.jpeg",
+                        style: {
+                          padding: "12px 18px",
+                          borderRadius: "12px",
+                          background: "#f0f0f0",
+                          color: "#333",
+                          fontWeight: 700,
+                          fontSize: "14px",
+                          textAlign: "center",
+                          textDecoration: "none"
+                        },
+                        children: "📥 Download"
+                      })
                     ]
                   })
                 ]
               })
             ]
-          }, post.id))
-        })
-      }),
-
-      /* Full View Modal */
-      selectedPost ? u.jsx("div", {
-        style: {
-          position: "fixed",
-          inset: 0,
-          zIndex: 99999,
-          background: "rgba(10, 10, 25, 0.88)",
-          backdropFilter: "blur(12px)",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          padding: "20px"
-        },
-        onClick: (e) => { if (e.target === e.currentTarget) setSelectedPost(null); },
-        children: u.jsxs("div", {
-          style: {
-            background: "#ffffff",
-            borderRadius: "24px",
-            maxWidth: "960px",
-            width: "100%",
-            maxHeight: "92vh",
-            overflowY: "auto",
-            boxShadow: "0 25px 60px -12px rgba(0, 0, 0, 0.6)",
-            position: "relative",
-            display: "flex",
-            flexDirection: "row",
-            flexWrap: "wrap",
-            border: "1px solid rgba(174, 89, 255, 0.3)"
-          },
+          })
+        }) : null
+      ]
+    });
+  }, W0 = "_StatWrapper_1c1w8_1", B0 = "_contentDiv_1c1w8_15", U0 = "_leftContainer_1c1w8_26", V0 = "_rightContainer_1c1w8_52", tl = { StatWrapper: W0, contentDiv: B0, leftContainer: U0, rightContainer: V0 }, H0 = () => { const [e, t] = v.useState([0, 0, 0, 0]), n = 3, r = v.useRef(null), l = i => { if (!i) return !1; const o = i.getBoundingClientRect(); return o.top >= 0 && o.left >= 0 && o.bottom <= (window.innerHeight || document.documentElement.clientHeight) && o.right <= (window.innerWidth || document.documentElement.clientWidth) }; return v.useEffect(() => { const i = [M.statistics.studentsCount ?? 0, M.statistics.learningCircles ?? 0, M.statistics.InterestGroups ?? 0, M.statistics.karmaEarned ?? 0], o = () => { const c = setInterval(() => { t(d => d.map((h, g) => h < i[g] ? h + Math.ceil(i[g] / (n * 20)) : i[g])) }, 50); return () => clearInterval(c) }; let a; const s = new IntersectionObserver(c => { c[0].isIntersecting && (a = o()) }, { root: null, rootMargin: "0px", threshold: .5 }); return r.current && (l(r.current) ? a = o() : s.observe(r.current)), () => { a && a(), r.current && s.unobserve(r.current) } }, [M.statistics]), u.jsxs("div", { className: tl.StatWrapper, children: [u.jsx("h1", { children: "Our Statistics" }), u.jsxs("div", { className: tl.contentDiv, children: [u.jsx("div", { className: tl.leftContainer, ref: r, children: e.map((i, o) => u.jsxs("div", { children: [u.jsx("h3", { children: o === 3 ? `${i.toLocaleString()}+` : `${i}+` }), u.jsx("p", { children: o === 0 ? "STUDENTS" : o === 1 ? "LEARNING" : o === 2 ? "INTEREST" : "KARMA" }), u.jsx("p", { children: o === 0 ? "ENROLLED" : o === 1 ? "CIRCLES" : o === 2 ? "GROUPS" : "MINED" })] }, o)) }), u.jsxs("div", { className: tl.rightContainer, children: [u.jsx(Do, {}), u.jsxs("h2", { children: ["Rank:", M.statistics.rank] })] })] })] }) }, Q0 = "_exploreLCWrapper_xmyi4_1", K0 = "_imageWrapper_xmyi4_11", G0 = "_contentWrapper_xmyi4_20", $i = { exploreLCWrapper: Q0, imageWrapper: K0, contentWrapper: G0 }, Z0 = "/assets/explorelc-4a75ae1d.svg", Y0 = () => u.jsxs("div", { className: $i.exploreLCWrapper, children: [u.jsx("div", { className: $i.imageWrapper, children: u.jsx("img", { src: Z0, alt: "" }) }), u.jsxs("div", { className: $i.contentWrapper, children: [u.jsx("h1", { children: "Explore Learning Circles" }), u.jsx("p", { children: "An informal mechanism for bringing together learners who are interested in the same topic from across different fields and disciplines. A fantastic way to spend a small amount of time learning about new things with a group of people with same interests!" }), u.jsx("a", { target: "_blank", href: "https://app.mulearn.org/learning-circle", children: "Create/Join Learning Circles" })] })] }), X0 = "_teamWrapper_5dw4z_1", J0 = "_teamBodyWrapper_5dw4z_16", q0 = "_teamBgLineWrapper_5dw4z_22", b0 = "_teamMembersDetailsWrapper_5dw4z_44", e2 = "_team_5dw4z_1", t2 = "_teamImageIndividual_5dw4z_66", n2 = "_teamNameDesignation_5dw4z_75", r2 = "_teamMemberName_5dw4z_84", l2 = "_teamMemberDesignation_5dw4z_94", i2 = "_team1Img_5dw4z_106", o2 = "_team1_5dw4z_106", a2 = "_team2_5dw4z_122", s2 = "_team3_5dw4z_129", u2 = "_team4_5dw4z_136", c2 = "_team5_5dw4z_143", d2 = "_team6_5dw4z_150", f2 = "_team7_5dw4z_157", p2 = "_team8_5dw4z_163", m2 = "_team9_5dw4z_170", N = { teamWrapper: X0, teamBodyWrapper: J0, teamBgLineWrapper: q0, teamMembersDetailsWrapper: b0, team: e2, teamImageIndividual: t2, teamNameDesignation: n2, teamMemberName: r2, teamMemberDesignation: l2, team1Img: i2, team1: o2, team2: a2, team3: s2, team4: u2, team5: c2, team6: d2, team7: f2, team8: p2, team9: m2 }, Fi = "/assets/line-2b02aac6.png", tu = "/assets/line2-b0779cc1.png", ourLeadsData = [
+    { name: "Prof. Ajeena Ashraf", designation: "Campus Enabler", image: "/mulearn-mbccet-assets/achievements/enabeler.jpg" },
+    { name: "V S Geethu", designation: "Campus Lead", image: "/mulearn-mbccet-assets/team/geethu.jpeg" },
+    { name: "Jini Shiju", designation: "Campus Co-Lead", image: "/mulearn-mbccet-assets/team/jini.jpeg" },
+    { name: "Joyanna B", designation: "Co-Lead", image: "/mulearn-mbccet-assets/team/joyanna.jpeg" },
+    { name: "Irin Ann Shaji", designation: "Operation Team Lead", image: "/mulearn-mbccet-assets/team/irin.jpeg" },
+    { name: "Abin Mathew Thomas", designation: "Tech Lead", image: "/mulearn-mbccet-assets/team/abin.jpeg" },
+    { name: "Adwaith Abhi", designation: "Media Lead", image: "/mulearn-mbccet-assets/team/adwaith.jpeg" },
+    { name: "Priyanka", designation: "Design Lead", image: "/mulearn-mbccet-assets/team/priyanka.jpeg" }
+  ],
+  ourIgLeadsData = [
+    { name: "Jubit A Jacob", designation: "Space IG Lead", image: "/mulearn-mbccet-assets/team/jubit.jpeg" },
+    { name: "Anandhu Krishnan", designation: "Comics IG Lead", image: "/mulearn-mbccet-assets/team/anandhu.jpeg" },
+    { name: "Abin Mathew Thomas", designation: "Cybersecurity IG Lead", image: "/mulearn-mbccet-assets/team/abin.jpeg" },
+    { name: "Joyanna B", designation: "HR IG Lead", image: "/mulearn-mbccet-assets/team/joyanna.jpeg" },
+    { name: "Reuben Sam Philip", designation: "Web IG Lead", image: "/mulearn-mbccet-assets/team/reuben.jpeg" },
+    { name: "Adwaith Abhi", designation: "Muv IG Lead", image: "/mulearn-mbccet-assets/team/adwaith.jpeg" }
+  ],
+  ourSubLeadsData = [
+    { name: "Ann Mary Job", designation: "Tech Sub Lead", image: "/mulearn-mbccet-assets/team/ann_mary.jpeg" },
+    { name: "Nelphy Anna Joji", designation: "Operation Team Sub Lead", image: "/mulearn-mbccet-assets/team/nelphy.jpeg" },
+    { name: "Iwin Sajimon P", designation: "Tech Sub Lead", image: "/mulearn-mbccet-assets/team/iwin.jpeg" },
+    { name: "Ansiya H", designation: "Design Sub Lead", image: "/mulearn-mbccet-assets/team/ansiya.jpeg" },
+    { name: "Naveen Monachan", designation: "Media & Muv IG Sub Lead", image: "/mulearn-mbccet-assets/team/naveen.jpeg" },
+    { name: "Niranjana P A", designation: "Operation Team Sub Lead", image: "/mulearn-mbccet-assets/team/niranjana.jpeg" },
+    { name: "Rennees Biju", designation: "Media & Muv IG Sub Lead", image: "/mulearn-mbccet-assets/team/rennees.jpeg" }
+  ],
+  ourInternsData = [
+    { name: "Reuben Sam Philip", designation: "Campus Management Zonal Lead", image: "/mulearn-mbccet-assets/team/reuben.jpeg" },
+    { name: "Gayathri S", designation: "Civil IG Lead", image: "/mulearn-mbccet-assets/team/gayathri.jpeg" },
+    { name: "Nandhana P B", designation: "Civil IG Lead", image: "/mulearn-mbccet-assets/team/nandhana.jpeg" }
+  ],
+  renderTeamSec = (title, members) => u.jsxs("div", {
+    style: { display: "flex", flexDirection: "column", alignItems: "center", width: "100%", marginBottom: "60px" },
+    children: [
+      u.jsx("h1", { style: { color: "#ad58ff", fontSize: "2.2rem", fontWeight: "700", marginBottom: "30px", textAlign: "center" }, children: title }),
+      u.jsx("div", {
+        style: { display: "flex", flexWrap: "wrap", justifyContent: "center", alignItems: "flex-start", gap: "35px", width: "100%", maxWidth: "1200px", padding: "0 20px" },
+        children: members.map((m, idx) => u.jsxs("div", {
+          style: { display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center", width: "210px" },
           children: [
-            /* Close Button */
-            u.jsx("button", {
-              onClick: () => setSelectedPost(null),
-              style: {
-                position: "absolute",
-                top: "15px",
-                right: "15px",
-                background: "rgba(0, 0, 0, 0.7)",
-                color: "#fff",
-                border: "none",
-                borderRadius: "50%",
-                width: "38px",
-                height: "38px",
-                fontSize: "20px",
-                cursor: "pointer",
-                zIndex: 20,
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                boxShadow: "0 2px 10px rgba(0,0,0,0.3)"
-              },
-              children: "✕"
-            }),
-
-            /* Navigation Arrows */
-            u.jsx("button", {
-              onClick: handlePrev,
-              style: {
-                position: "absolute",
-                left: "15px",
-                top: "50%",
-                transform: "translateY(-50%)",
-                background: "rgba(174, 89, 255, 0.9)",
-                color: "#fff",
-                border: "none",
-                borderRadius: "50%",
-                width: "44px",
-                height: "44px",
-                fontSize: "24px",
-                fontWeight: "bold",
-                cursor: "pointer",
-                zIndex: 20,
-                boxShadow: "0 4px 14px rgba(0,0,0,0.3)",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center"
-              },
-              children: "‹"
-            }),
-            u.jsx("button", {
-              onClick: handleNext,
-              style: {
-                position: "absolute",
-                right: "15px",
-                top: "50%",
-                transform: "translateY(-50%)",
-                background: "rgba(174, 89, 255, 0.9)",
-                color: "#fff",
-                border: "none",
-                borderRadius: "50%",
-                width: "44px",
-                height: "44px",
-                fontSize: "24px",
-                fontWeight: "bold",
-                cursor: "pointer",
-                zIndex: 20,
-                boxShadow: "0 4px 14px rgba(0,0,0,0.3)",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center"
-              },
-              children: "›"
-            }),
-
-            /* Left Side: Full Poster Image */
             u.jsx("div", {
-              style: {
-                flex: "1 1 420px",
-                background: "#080614",
-                padding: "24px",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                borderTopLeftRadius: "24px",
-                borderBottomLeftRadius: "24px",
-                minHeight: "420px"
-              },
               children: u.jsx("img", {
-                src: selectedPost.image,
-                alt: selectedPost.title,
-                style: {
-                  maxWidth: "100%",
-                  maxHeight: "75vh",
-                  objectFit: "contain",
-                  borderRadius: "14px",
-                  boxShadow: "0 12px 35px rgba(0,0,0,0.6)"
-                }
+                className: N.teamImageIndividual,
+                src: m.image,
+                alt: m.name,
+                loading: "lazy",
+                style: { width: "11rem", height: "11rem", borderRadius: "50%", objectFit: "cover", objectPosition: "center 15%" },
+
               })
             }),
-
-            /* Right Side: Read Details */
             u.jsxs("div", {
-              style: {
-                flex: "1 1 380px",
-                padding: "35px 30px 30px",
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "space-between",
-                background: "#ffffff",
-                borderTopRightRadius: "24px",
-                borderBottomRightRadius: "24px"
-              },
-              children: [
-                u.jsxs("div", {
-                  children: [
-                    /* Header Tag & Date */
-                    u.jsxs("div", {
-                      style: { display: "flex", alignItems: "center", gap: "10px", marginBottom: "14px" },
-                      children: [
-                        u.jsx("span", {
-                          style: {
-                            background: "linear-gradient(135deg, #ae59ff, #8a2be2)",
-                            color: "#fff",
-                            fontSize: "12px",
-                            fontWeight: 700,
-                            padding: "4px 14px",
-                            borderRadius: "16px",
-                            boxShadow: "0 2px 8px rgba(174, 89, 255, 0.25)"
-                          },
-                          children: selectedPost.category
-                        }),
-                        u.jsx("span", { style: { fontSize: "13px", color: "#666", fontWeight: 600 }, children: selectedPost.date })
-                      ]
-                    }),
-
-                    /* Title */
-                    u.jsx("h3", { style: { fontSize: "1.5rem", fontWeight: 800, color: "#111", lineHeight: 1.3, marginBottom: "16px" }, children: selectedPost.title }),
-
-                    /* Metadata List */
-                    u.jsxs("div", {
-                      style: { display: "flex", flexDirection: "column", gap: "8px", marginBottom: "20px", fontSize: "14px", color: "#444" },
-                      children: [
-                        selectedPost.time ? u.jsxs("div", { style: { display: "flex", gap: "6px" }, children: [u.jsx("span", { style: { fontWeight: 700, color: "#ae59ff" }, children: "⏰ Time:" }), selectedPost.time] }) : null,
-                        selectedPost.venue ? u.jsxs("div", { style: { display: "flex", gap: "6px" }, children: [u.jsx("span", { style: { fontWeight: 700, color: "#ae59ff" }, children: "📍 Venue:" }), selectedPost.venue] }) : null,
-                        selectedPost.speaker ? u.jsxs("div", { style: { display: "flex", gap: "6px" }, children: [u.jsx("span", { style: { fontWeight: 700, color: "#ae59ff" }, children: "🎤 Speaker:" }), selectedPost.speaker] }) : null
-                      ]
-                    }),
-
-                    /* Description Box */
-                    u.jsx("div", {
-                      style: {
-                        fontSize: "14px",
-                        lineHeight: 1.6,
-                        color: "#2d2d2d",
-                        background: "#f8f5ff",
-                        padding: "16px",
-                        borderRadius: "14px",
-                        borderLeft: "4px solid #ae59ff"
-                      },
-                      children: selectedPost.description
-                    })
-                  ]
-                }),
-
-                /* Action Footer */
-                u.jsxs("div", {
-                  style: { display: "flex", gap: "12px", marginTop: "25px", flexWrap: "wrap" },
-                  children: [
-                    u.jsx("a", {
-                      href: selectedPost.image,
-                      target: "_blank",
-                      rel: "noopener noreferrer",
-                      style: {
-                        flex: 1,
-                        padding: "12px 18px",
-                        borderRadius: "12px",
-                        background: "linear-gradient(135deg, #ae59ff, #8a2be2)",
-                        color: "#fff",
-                        fontWeight: 700,
-                        fontSize: "14px",
-                        textAlign: "center",
-                        textDecoration: "none",
-                        boxShadow: "0 4px 12px rgba(174, 89, 255, 0.3)"
-                      },
-                      children: "🔍 Open Full Image"
-                    }),
-                    u.jsx("a", {
-                      href: selectedPost.image,
-                      download: "mulearn-post.jpeg",
-                      style: {
-                        padding: "12px 18px",
-                        borderRadius: "12px",
-                        background: "#f0f0f0",
-                        color: "#333",
-                        fontWeight: 700,
-                        fontSize: "14px",
-                        textAlign: "center",
-                        textDecoration: "none"
-                      },
-                      children: "📥 Download"
-                    })
-                  ]
-                })
+              className: N.teamNameDesignation, style: { marginTop: "12px" }, children: [
+                u.jsx("div", { className: N.teamMemberName, style: { fontSize: "1.2rem", fontWeight: "700", color: "#000" }, children: m.name }),
+                u.jsx("div", { className: N.teamMemberDesignation, style: { fontSize: "0.95rem", color: "#ad58ff", marginTop: "4px" }, children: m.designation })
               ]
             })
           ]
-        })
-      }) : null
-    ]
-  });
-}, W0 = "_StatWrapper_1c1w8_1", B0 = "_contentDiv_1c1w8_15", U0 = "_leftContainer_1c1w8_26", V0 = "_rightContainer_1c1w8_52", tl = { StatWrapper: W0, contentDiv: B0, leftContainer: U0, rightContainer: V0 }, H0 = () => { const [e, t] = v.useState([0, 0, 0, 0]), n = 3, r = v.useRef(null), l = i => { if (!i) return !1; const o = i.getBoundingClientRect(); return o.top >= 0 && o.left >= 0 && o.bottom <= (window.innerHeight || document.documentElement.clientHeight) && o.right <= (window.innerWidth || document.documentElement.clientWidth) }; return v.useEffect(() => { const i = [M.statistics.studentsCount ?? 0, M.statistics.learningCircles ?? 0, M.statistics.InterestGroups ?? 0, M.statistics.karmaEarned ?? 0], o = () => { const c = setInterval(() => { t(d => d.map((h, g) => h < i[g] ? h + Math.ceil(i[g] / (n * 20)) : i[g])) }, 50); return () => clearInterval(c) }; let a; const s = new IntersectionObserver(c => { c[0].isIntersecting && (a = o()) }, { root: null, rootMargin: "0px", threshold: .5 }); return r.current && (l(r.current) ? a = o() : s.observe(r.current)), () => { a && a(), r.current && s.unobserve(r.current) } }, [M.statistics]), u.jsxs("div", { className: tl.StatWrapper, children: [u.jsx("h1", { children: "Our Statistics" }), u.jsxs("div", { className: tl.contentDiv, children: [u.jsx("div", { className: tl.leftContainer, ref: r, children: e.map((i, o) => u.jsxs("div", { children: [u.jsx("h3", { children: o === 3 ? `${i.toLocaleString()}+` : `${i}+` }), u.jsx("p", { children: o === 0 ? "STUDENTS" : o === 1 ? "LEARNING" : o === 2 ? "INTEREST" : "KARMA" }), u.jsx("p", { children: o === 0 ? "ENROLLED" : o === 1 ? "CIRCLES" : o === 2 ? "GROUPS" : "MINED" })] }, o)) }), u.jsxs("div", { className: tl.rightContainer, children: [u.jsx(Do, {}), u.jsxs("h2", { children: ["Rank:", M.statistics.rank] })] })] })] }) }, Q0 = "_exploreLCWrapper_xmyi4_1", K0 = "_imageWrapper_xmyi4_11", G0 = "_contentWrapper_xmyi4_20", $i = { exploreLCWrapper: Q0, imageWrapper: K0, contentWrapper: G0 }, Z0 = "/assets/explorelc-4a75ae1d.svg", Y0 = () => u.jsxs("div", { className: $i.exploreLCWrapper, children: [u.jsx("div", { className: $i.imageWrapper, children: u.jsx("img", { src: Z0, alt: "" }) }), u.jsxs("div", { className: $i.contentWrapper, children: [u.jsx("h1", { children: "Explore Learning Circles" }), u.jsx("p", { children: "An informal mechanism for bringing together learners who are interested in the same topic from across different fields and disciplines. A fantastic way to spend a small amount of time learning about new things with a group of people with same interests!" }), u.jsx("a", { target: "_blank", href: "https://app.mulearn.org/learning-circle", children: "Create/Join Learning Circles" })] })] }), X0 = "_teamWrapper_5dw4z_1", J0 = "_teamBodyWrapper_5dw4z_16", q0 = "_teamBgLineWrapper_5dw4z_22", b0 = "_teamMembersDetailsWrapper_5dw4z_44", e2 = "_team_5dw4z_1", t2 = "_teamImageIndividual_5dw4z_66", n2 = "_teamNameDesignation_5dw4z_75", r2 = "_teamMemberName_5dw4z_84", l2 = "_teamMemberDesignation_5dw4z_94", i2 = "_team1Img_5dw4z_106", o2 = "_team1_5dw4z_106", a2 = "_team2_5dw4z_122", s2 = "_team3_5dw4z_129", u2 = "_team4_5dw4z_136", c2 = "_team5_5dw4z_143", d2 = "_team6_5dw4z_150", f2 = "_team7_5dw4z_157", p2 = "_team8_5dw4z_163", m2 = "_team9_5dw4z_170", N = { teamWrapper: X0, teamBodyWrapper: J0, teamBgLineWrapper: q0, teamMembersDetailsWrapper: b0, team: e2, teamImageIndividual: t2, teamNameDesignation: n2, teamMemberName: r2, teamMemberDesignation: l2, team1Img: i2, team1: o2, team2: a2, team3: s2, team4: u2, team5: c2, team6: d2, team7: f2, team8: p2, team9: m2 }, Fi = "/assets/line-2b02aac6.png", tu = "/assets/line2-b0779cc1.png", ourLeadsData = [
-  { name: "Prof. Ajeena Ashraf", designation: "Campus Enabler", image: "/mulearn-mbccet-assets/achievements/enabeler.jpg" },
-  { name: "V S Geethu", designation: "Campus Lead", image: "/mulearn-mbccet-assets/team/geethu.jpeg" },
-  { name: "Jini Shiju", designation: "Campus Co-Lead", image: "/mulearn-mbccet-assets/team/jini.jpeg" },
-  { name: "Joyanna B", designation: "Co-Lead", image: "/mulearn-mbccet-assets/team/joyanna.jpeg" },
-  { name: "Irin Ann Shaji", designation: "Operation Team Lead", image: "/mulearn-mbccet-assets/team/irin.jpeg" },
-  { name: "Abin Mathew Thomas", designation: "Tech Lead", image: "/mulearn-mbccet-assets/team/abin.jpeg" },
-  { name: "Adwaith Abhi", designation: "Media Lead", image: "/mulearn-mbccet-assets/team/adwaith.jpeg" },
-  { name: "Priyanka", designation: "Design Lead", image: "/mulearn-mbccet-assets/team/priyanka.jpeg" }
-],
-ourIgLeadsData = [
-  { name: "Jubit A Jacob", designation: "Space IG Lead", image: "/mulearn-mbccet-assets/team/jubit.jpeg" },
-  { name: "Anandhu Krishnan", designation: "Comics IG Lead", image: "/mulearn-mbccet-assets/team/anandhu.jpeg" },
-  { name: "Abin Mathew Thomas", designation: "Cybersecurity IG Lead", image: "/mulearn-mbccet-assets/team/abin.jpeg" },
-  { name: "Joyanna B", designation: "HR IG Lead", image: "/mulearn-mbccet-assets/team/joyanna.jpeg" },
-  { name: "Reuben Sam Philip", designation: "Web IG Lead", image: "/mulearn-mbccet-assets/team/reuben.jpeg" },
-  { name: "Adwaith Abhi", designation: "Muv IG Lead", image: "/mulearn-mbccet-assets/team/adwaith.jpeg" }
-],
-ourSubLeadsData = [
-  { name: "Ann Mary Job", designation: "Tech Sub Lead", image: "/mulearn-mbccet-assets/team/ann_mary.jpeg" },
-  { name: "Nelphy Anna Joji", designation: "Operation Team Sub Lead", image: "/mulearn-mbccet-assets/team/nelphy.jpeg" },
-  { name: "Iwin Sajimon P", designation: "Tech Sub Lead", image: "/mulearn-mbccet-assets/team/iwin.jpeg" },
-  { name: "Ansiya H", designation: "Design Sub Lead", image: "/mulearn-mbccet-assets/team/ansiya.jpeg" },
-  { name: "Naveen Monachan", designation: "Media & Muv IG Sub Lead", image: "/mulearn-mbccet-assets/team/naveen.jpeg" },
-  { name: "Niranjana P A", designation: "Operation Team Sub Lead", image: "/mulearn-mbccet-assets/team/niranjana.jpeg" },
-  { name: "Rennees Biju", designation: "Media & Muv IG Sub Lead", image: "/mulearn-mbccet-assets/team/rennees.jpeg" }
-],
-ourInternsData = [
-  { name: "Reuben Sam Philip", designation: "Campus Management Zonal Lead & Intern", image: "/mulearn-mbccet-assets/team/reuben.jpeg" },
-  { name: "Gayathri S", designation: "Civil IG Lead", image: "/mulearn-mbccet-assets/team/gayathri.jpeg" },
-  { name: "Nandhana P B", designation: "Civil IG Sub Lead", image: "/mulearn-mbccet-assets/team/nandhana.jpeg" }
-],
-renderTeamSec = (title, members) => u.jsxs("div", {
-  style: { display: "flex", flexDirection: "column", alignItems: "center", width: "100%", marginBottom: "60px" },
-  children: [
-    u.jsx("h1", { style: { color: "#ad58ff", fontSize: "2.2rem", fontWeight: "700", marginBottom: "30px", textAlign: "center" }, children: title }),
-    u.jsx("div", {
-      style: { display: "flex", flexWrap: "wrap", justifyContent: "center", alignItems: "flex-start", gap: "35px", width: "100%", maxWidth: "1200px", padding: "0 20px" },
-      children: members.map((m, idx) => u.jsxs("div", {
-        style: { display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center", width: "210px" },
-        children: [
-          u.jsx("div", {
-            children: u.jsx("img", {
-              className: N.teamImageIndividual,
-              src: m.image,
-              alt: m.name,
-              loading: "lazy",
-              style: { width: "11rem", height: "11rem", borderRadius: "50%", objectFit: "cover", objectPosition: "center 15%" },
-
-            })
-          }),
-          u.jsxs("div", { className: N.teamNameDesignation, style: { marginTop: "12px" }, children: [
-            u.jsx("div", { className: N.teamMemberName, style: { fontSize: "1.2rem", fontWeight: "700", color: "#000" }, children: m.name }),
-            u.jsx("div", { className: N.teamMemberDesignation, style: { fontSize: "0.95rem", color: "#ad58ff", marginTop: "4px" }, children: m.designation })
-          ] })
-        ]
-      }, idx.toString() + m.name))
-    })
-  ]
-}),
-h2 = () => u.jsxs("div", { className: N.teamWrapper, id: "team", style: { display: "flex", flexDirection: "column", alignItems: "center", width: "100%", paddingTop: "40px", background: "url(/assets/line-2b02aac6.png) center 5% / 100% auto no-repeat, url(/assets/line2-b0779cc1.png) center 30% / 100% auto no-repeat, url(/assets/line-2b02aac6.png) center 55% / 100% auto no-repeat, url(/assets/line2-b0779cc1.png) center 80% / 100% auto no-repeat" }, children: [
-  renderTeamSec("Our Leads", ourLeadsData),
-  renderTeamSec("Our IG Leads", ourIgLeadsData),
-  renderTeamSec("Our Sub Leads", ourSubLeadsData),
-  renderTeamSec("Our Interns", ourInternsData)
-] }), g2 = "_ConnectWrapper_183ru_1", v2 = "_contentWrapper_183ru_12", y2 = "_innerContent_183ru_25", w2 = "_socialMedia_183ru_43", C2 = "_discord_183ru_61", x2 = "_Whatsapp_183ru_66", nn = { ConnectWrapper: g2, contentWrapper: v2, innerContent: y2, socialMedia: w2, discord: C2, Whatsapp: x2 }, k2 = "/assets/image-8f34718b.svg", _2 = () => u.jsx("svg", { xmlns: "http://www.w3.org/2000/svg", width: "25", height: "25", viewBox: "0 0 25 25", fill: "none", children: u.jsx("path", { d: "M20.7835 3.91242C19.673 2.79074 18.3503 1.90139 16.8926 1.29624C15.4348 0.691098 13.8712 0.382269 12.2928 0.387767C5.67954 0.387767 0.289616 5.77769 0.289616 12.391C0.289616 14.5106 0.846777 16.5697 1.88843 18.3865L0.192719 24.6122L6.55162 22.9407C8.30789 23.8975 10.2822 24.4062 12.2928 24.4062C18.9061 24.4062 24.296 19.0163 24.296 12.4031C24.296 9.19333 23.0484 6.1774 20.7835 3.91242ZM12.2928 22.3714C10.5002 22.3714 8.74393 21.8869 7.20568 20.9785L6.84231 20.7605L3.06331 21.7537L4.06862 18.0716L3.82638 17.6961C2.83045 16.1057 2.30162 14.2674 2.30024 12.391C2.30024 6.89202 6.78175 2.4105 12.2807 2.4105C14.9454 2.4105 17.4526 3.45215 19.33 5.34166C20.2596 6.26698 20.9963 7.36762 21.4973 8.57976C21.9984 9.7919 22.2539 11.0914 22.249 12.4031C22.2733 17.902 17.7917 22.3714 12.2928 22.3714ZM17.7675 14.9103C17.4647 14.7649 15.987 14.0382 15.7206 13.9292C15.442 13.8323 15.2482 13.7839 15.0423 14.0745C14.8364 14.3774 14.2671 15.0556 14.0975 15.2494C13.9279 15.4553 13.7463 15.4796 13.4435 15.3221C13.1407 15.1768 12.1717 14.8497 11.0331 13.8323C10.1368 13.0329 9.54333 12.0518 9.36165 11.749C9.19208 11.4462 9.33743 11.2887 9.49488 11.1313C9.62812 10.998 9.79769 10.78 9.94304 10.6105C10.0884 10.4409 10.1489 10.3077 10.2458 10.1139C10.3427 9.90795 10.2943 9.73838 10.2216 9.59304C10.1489 9.44769 9.54333 7.97 9.30109 7.36439C9.05884 6.78301 8.80449 6.85568 8.62281 6.84357H8.04142C7.83551 6.84357 7.5206 6.91624 7.24202 7.21905C6.97555 7.52185 6.20037 8.24858 6.20037 9.72627C6.20037 11.204 7.27835 12.6332 7.4237 12.827C7.56905 13.0329 9.54333 16.0609 12.5472 17.357C13.2618 17.6719 13.8189 17.8536 14.255 17.9868C14.9696 18.2169 15.6237 18.1806 16.1445 18.1079C16.7259 18.0231 17.925 17.3812 18.1672 16.6787C18.4216 15.9762 18.4216 15.3827 18.3368 15.2494C18.252 15.1162 18.0703 15.0556 17.7675 14.9103Z", fill: "#AE59FF" }) }), S2 = () => u.jsx("svg", { xmlns: "http://www.w3.org/2000/svg", width: "25", height: "25", viewBox: "0 0 28 21", fill: "none", children: u.jsx("path", { d: "M23.3212 2.07948C21.6427 1.297 19.8253 0.729073 17.9322 0.400937C17.9156 0.400406 17.8991 0.403521 17.8838 0.410063C17.8686 0.416604 17.8549 0.426414 17.8439 0.438799C17.6167 0.855279 17.3517 1.39796 17.175 1.81444C15.167 1.51155 13.125 1.51155 11.1171 1.81444C10.9404 1.38534 10.6754 0.855279 10.4356 0.438799C10.423 0.413558 10.3851 0.400937 10.3472 0.400937C8.45415 0.729073 6.6494 1.297 4.95824 2.07948C4.94562 2.07948 4.933 2.0921 4.92038 2.10472C1.48758 7.2413 0.541035 12.2391 1.008 17.1863C1.008 17.2116 1.02062 17.2368 1.04586 17.2494C3.31757 18.9154 5.50093 19.925 7.65905 20.5939C7.69691 20.6065 7.73478 20.5939 7.7474 20.5687C8.25222 19.8745 8.70656 19.1425 9.0978 18.3727C9.12304 18.3222 9.0978 18.2717 9.04732 18.2591C8.32794 17.9814 7.64643 17.6533 6.97754 17.2747C6.92706 17.2494 6.92706 17.1737 6.96492 17.1359C7.10374 17.0349 7.24257 16.9213 7.3814 16.8203C7.40664 16.7951 7.4445 16.7951 7.46974 16.8077C11.8112 18.7891 16.4935 18.7891 20.7845 16.8077C20.8097 16.7951 20.8476 16.7951 20.8728 16.8203C21.0116 16.9339 21.1505 17.0349 21.2893 17.1485C21.3398 17.1863 21.3398 17.2621 21.2767 17.2873C20.6204 17.6785 19.9263 17.9941 19.2069 18.2717C19.1564 18.2843 19.1438 18.3474 19.1564 18.3853C19.5603 19.1551 20.0146 19.8871 20.5068 20.5813C20.5447 20.5939 20.5825 20.6065 20.6204 20.5939C22.7911 19.925 24.9745 18.9154 27.2462 17.2494C27.2715 17.2368 27.2841 17.2116 27.2841 17.1863C27.8394 11.4692 26.3628 6.50931 23.3717 2.10472C23.3591 2.0921 23.3465 2.07948 23.3212 2.07948ZM9.75407 14.17C8.45415 14.17 7.36878 12.9711 7.36878 11.4944C7.36878 10.0178 8.42891 8.81888 9.75407 8.81888C11.0919 8.81888 12.152 10.0305 12.1394 11.4944C12.1394 12.9711 11.0792 14.17 9.75407 14.17ZM18.5506 14.17C17.2507 14.17 16.1653 12.9711 16.1653 11.4944C16.1653 10.0178 17.2255 8.81888 18.5506 8.81888C19.8884 8.81888 20.9485 10.0305 20.9359 11.4944C20.9359 12.9711 19.8884 14.17 18.5506 14.17Z", fill: "white" }) }), E2 = () => u.jsxs("div", { id: "contact", className: nn.ConnectWrapper, children: [u.jsx("h1", { children: "Connect With Us" }), u.jsxs("div", { className: nn.contentWrapper, children: [u.jsxs("div", { className: nn.innerContent, children: [u.jsxs("div", { children: [u.jsxs("h2", { children: ["Join µLearn ", M.collegeCode, " Discord server!"] }), u.jsx("p", { children: "Do join our campus community discord server, so you don’t miss out any of the updates." })] }), u.jsxs("div", { className: nn.socialMedia, children: [u.jsxs("a", { href: M.discordLink, className: nn.discord, target: "_blank", children: [u.jsx(S2, {}), "Join Discord"] }), u.jsxs("a", { href: M.whatsAppLink, className: nn.Whatsapp, children: [u.jsx(_2, {}), "Join Whatsapp"] })] })] }), u.jsx("div", { children: u.jsx("img", { src: k2, alt: "" }) })] })] }), N2 = "_FooterWrapper_bv94u_1", j2 = "_topFooter_bv94u_13", L2 = "_socialMedia_bv94u_28", P2 = "_line_bv94u_47", R2 = "_ptag_bv94u_53", Kn = { FooterWrapper: N2, topFooter: j2, socialMedia: L2, line: P2, ptag: R2 }, M2 = () => u.jsx("svg", { xmlns: "http://www.w3.org/2000/svg", width: "22", height: "22", viewBox: "0 0 26 27", fill: "none", children: u.jsx("path", { d: "M22.8903 0.624268C23.6492 0.624268 24.377 0.925724 24.9136 1.46232C25.4502 1.99892 25.7516 2.7267 25.7516 3.48556V23.5146C25.7516 24.2735 25.4502 25.0013 24.9136 25.5378C24.377 26.0744 23.6492 26.3759 22.8903 26.3759H2.86129C2.10243 26.3759 1.37465 26.0744 0.838053 25.5378C0.301457 25.0013 0 24.2735 0 23.5146V3.48556C0 2.7267 0.301457 1.99892 0.838053 1.46232C1.37465 0.925724 2.10243 0.624268 2.86129 0.624268H22.8903ZM22.175 22.7993V15.2169C22.175 13.9799 21.6836 12.7936 20.809 11.919C19.9343 11.0443 18.7481 10.553 17.5111 10.553C16.2951 10.553 14.8787 11.2969 14.192 12.4128V10.8248H10.2005V22.7993H14.192V15.7462C14.192 14.6446 15.079 13.7433 16.1806 13.7433C16.7118 13.7433 17.2213 13.9543 17.5969 14.3299C17.9725 14.7055 18.1835 15.215 18.1835 15.7462V22.7993H22.175ZM5.55091 8.57866C6.18835 8.57866 6.79969 8.32544 7.25043 7.8747C7.70117 7.42396 7.95439 6.81262 7.95439 6.17518C7.95439 4.84467 6.88141 3.75738 5.55091 3.75738C4.90967 3.75738 4.29469 4.01211 3.84127 4.46554C3.38785 4.91896 3.13312 5.53394 3.13312 6.17518C3.13312 7.50568 4.22041 8.57866 5.55091 8.57866ZM7.53951 22.7993V10.8248H3.57662V22.7993H7.53951Z", fill: "#EBD7FF" }) }), z2 = () => u.jsx("svg", { xmlns: "http://www.w3.org/2000/svg", width: "22", height: "22", viewBox: "0 0 29 29", fill: "none", children: u.jsx("path", { d: "M8.41259 0.0239258H20.5725C25.2048 0.0239258 28.9686 3.7877 28.9686 8.42003V20.5799C28.9686 22.8067 28.084 24.9423 26.5094 26.5169C24.9348 28.0914 22.7993 28.976 20.5725 28.976H8.41259C3.78025 28.976 0.0164795 25.2122 0.0164795 20.5799V8.42003C0.0164795 6.19325 0.901067 4.05766 2.47564 2.48309C4.05022 0.908513 6.1858 0.0239258 8.41259 0.0239258ZM8.12306 2.91914C6.74092 2.91914 5.41539 3.46819 4.43807 4.44551C3.46074 5.42283 2.91169 6.74837 2.91169 8.13051V20.8694C2.91169 23.7502 5.24233 26.0808 8.12306 26.0808H20.862C22.2441 26.0808 23.5697 25.5318 24.547 24.5544C25.5243 23.5771 26.0734 22.2516 26.0734 20.8694V8.13051C26.0734 5.24978 23.7427 2.91914 20.862 2.91914H8.12306ZM22.0925 5.09054C22.5724 5.09054 23.0326 5.28119 23.372 5.62053C23.7113 5.95988 23.902 6.42014 23.902 6.90005C23.902 7.37996 23.7113 7.84021 23.372 8.17956C23.0326 8.51891 22.5724 8.70955 22.0925 8.70955C21.6125 8.70955 21.1523 8.51891 20.8129 8.17956C20.4736 7.84021 20.2829 7.37996 20.2829 6.90005C20.2829 6.42014 20.4736 5.95988 20.8129 5.62053C21.1523 5.28119 21.6125 5.09054 22.0925 5.09054ZM14.4925 7.26195C16.4122 7.26195 18.2532 8.02452 19.6106 9.38192C20.968 10.7393 21.7305 12.5803 21.7305 14.5C21.7305 16.4196 20.968 18.2606 19.6106 19.618C18.2532 20.9754 16.4122 21.738 14.4925 21.738C12.5729 21.738 10.7319 20.9754 9.37447 19.618C8.01708 18.2606 7.2545 16.4196 7.2545 14.5C7.2545 12.5803 8.01708 10.7393 9.37447 9.38192C10.7319 8.02452 12.5729 7.26195 14.4925 7.26195ZM14.4925 10.1572C13.3407 10.1572 12.2361 10.6147 11.4217 11.4291C10.6073 12.2436 10.1497 13.3482 10.1497 14.5C10.1497 15.6518 10.6073 16.7564 11.4217 17.5708C12.2361 18.3852 13.3407 18.8428 14.4925 18.8428C15.6443 18.8428 16.7489 18.3852 17.5634 17.5708C18.3778 16.7564 18.8353 15.6518 18.8353 14.5C18.8353 13.3482 18.3778 12.2436 17.5634 11.4291C16.7489 10.6147 15.6443 10.1572 14.4925 10.1572Z", fill: "white" }) }), T2 = () => u.jsxs("div", { className: Kn.FooterWrapper, children: [u.jsxs("div", { className: Kn.topFooter, children: [u.jsx(Um, {}), u.jsxs("p", { children: ["Reach us at", " ", u.jsx("a", { href: `mailto:${M.email}`, children: M.email })] }), u.jsxs("div", { children: [u.jsx("a", { target: "_blank", href: "https://mulearn.org/", children: "µLearn" }), u.jsx("a", { target: "_blank", href: "https://mulearn.org/announcements", children: "Events" }), u.jsx("a", { target: "_blank", href: "https://mulearn.org/gallery", children: "Gallery" }), u.jsx("a", { target: "_blank", href: "https://online.fliphtml5.com/egsqr/tlgc/", children: "Branding" })] })] }), u.jsxs("div", { className: Kn.socialMedia, children: [u.jsxs("a", { href: M.linkedIn, children: [u.jsx(M2, {}), "LinkedIn"] }), u.jsxs("a", { href: M.instagram, children: [u.jsx(z2, {}), "Instagram"] })] }), u.jsx("div", { className: Kn.line }), u.jsxs("div", { className: Kn.ptag, children: [" ", u.jsx("p", { children: "Copyright © 2025. All Rights Reserved." }), u.jsx("p", { children: "µLearn Foundation." })] })] }), I2 = "_AboutWrapper_1rnw5_1", D2 = "_AchievementsWrapper_1rnw5_13", $2 = "_achievementsContainer_1rnw5_29", F2 = "_achievementCard_1rnw5_38", O2 = "_achievementImage_1rnw5_55", A2 = "_achievementInfo_1rnw5_73", Gn = { AboutWrapper: I2, AchievementsWrapper: D2, achievementsContainer: $2, achievementCard: F2, achievementImage: O2, achievementInfo: A2 }, W2 = () => {
-  v.useEffect(() => {
-    const scriptId = "elfsight-platform-script";
-    if (!document.getElementById(scriptId)) {
-      const script = document.createElement("script");
-      script.id = scriptId;
-      script.src = "https://elfsightcdn.com/platform.js";
-      script.async = true;
-      document.body.appendChild(script);
-    } else {
-      if (window.ElfsightApp && typeof window.ElfsightApp.init === "function") {
-        try { window.ElfsightApp.init(); } catch (err) {}
-      } else if (window.Elfsight && typeof window.Elfsight.init === "function") {
-        try { window.Elfsight.init(); } catch (err) {}
-      }
-    }
-  }, []);
-
-  return u.jsxs("div", {
-    id: "achievements",
-    className: Gn.AchievementsWrapper,
-    style: { display: "flex", flexDirection: "column", alignItems: "center", width: "100%" },
-    children: [
-      u.jsx("h1", { children: "Achievements" }),
-      u.jsxs("div", {
-        className: Gn.achievementsContainer,
-        style: { width: "100%", display: "flex", flexDirection: "column", alignItems: "center", gap: "30px" },
-        children: [
-          M.achievements.map((n, r) => u.jsxs("div", {
-            className: Gn.achievementCard,
-            children: [
-              u.jsx("div", { className: Gn.achievementImage, style: { height: "auto", minHeight: "200px" }, children: u.jsx("img", { src: n.image, alt: n.title }) }),
-              u.jsxs("div", { className: Gn.achievementInfo, children: [u.jsx("h3", { children: n.title }), u.jsx("p", { children: n.description })] })
-            ]
-          }, r)),
-          u.jsx("div", {
-            style: { width: "100%", maxWidth: "1000px", marginTop: "10px" },
-            children: u.jsx("div", {
-              className: "elfsight-app-2bcb43f2-2d77-4856-a12d-e17a007e502b",
-              "data-elfsight-app-lazy": "true"
-            })
-          })
-        ]
+        }, idx.toString() + m.name))
       })
     ]
-  });
-}, B2 = "_linkTreeWrapper_1758p_1", U2 = "_container_1758p_15", V2 = "_backButton_1758p_23", H2 = "_profileSection_1758p_52", Q2 = "_profileImage_1758p_64", K2 = "_memberName_1758p_92", G2 = "_memberRole_1758p_104", Z2 = "_memberBio_1758p_126", Y2 = "_infoSection_1758p_138", X2 = "_infoItem_1758p_148", J2 = "_infoLabel_1758p_172", q2 = "_infoValue_1758p_180", b2 = "_emailLink_1758p_189", eh = "_phoneLink_1758p_189", th = "_actionSection_1758p_201", nh = "_composeEmailBtn_1758p_206", rh = "_brandingSection_1758p_236", lh = "_brandLink_1758p_258", ih = "_socialLinks_1758p_314", oh = "_socialLink_1758p_314", ah = "_customLink_1758p_324", sh = "_linkContent_1758p_328", uh = "_socialLinksSection_1758p_336", ch = "_customLinksSection_1758p_337", dh = "_socialSection_1758p_540", fh = "_socialTitle_1758p_544", ph = "_loadingState_1758p_712", mh = "_errorState_1758p_713", ue = { linkTreeWrapper: B2, container: U2, backButton: V2, profileSection: H2, profileImage: Q2, memberName: K2, memberRole: G2, memberBio: Z2, infoSection: Y2, infoItem: X2, infoLabel: J2, infoValue: q2, emailLink: b2, phoneLink: eh, actionSection: th, composeEmailBtn: nh, brandingSection: rh, brandLink: lh, socialLinks: ih, socialLink: oh, customLink: ah, linkContent: sh, socialLinksSection: uh, customLinksSection: ch, socialSection: dh, socialTitle: fh, loadingState: ph, errorState: mh }, hh = "1acu2AnsIu-4I76I-Pkg0xwTQV_mSQMlrft-oZ8fpJmA", gh = "0", vh = `https://docs.google.com/spreadsheets/d/${hh}/gviz/tq?tqx=out:csv&gid=${gh}`, yh = e => {
-  const t = []; let n = [], r = "", l = !1; for (let i = 0; i < e.length; i++) {
-    const o = e[i], a = e[i + 1]; o === '"' && l && a === '"' ? (r += '"', i++) : o === '"' ? l = !l : o === "," && !l ? (n.push(r), r = "") : o === `
+  }),
+  h2 = () => u.jsxs("div", {
+    className: N.teamWrapper, id: "team", style: { display: "flex", flexDirection: "column", alignItems: "center", width: "100%", paddingTop: "40px", background: "url(/assets/line-2b02aac6.png) center 5% / 100% auto no-repeat, url(/assets/line2-b0779cc1.png) center 30% / 100% auto no-repeat, url(/assets/line-2b02aac6.png) center 55% / 100% auto no-repeat, url(/assets/line2-b0779cc1.png) center 80% / 100% auto no-repeat" }, children: [
+      renderTeamSec("Our Leads", ourLeadsData),
+      renderTeamSec("Our IG Leads", ourIgLeadsData),
+      renderTeamSec("Our Sub Leads", ourSubLeadsData),
+      renderTeamSec("Our Interns", ourInternsData)
+    ]
+  }), g2 = "_ConnectWrapper_183ru_1", v2 = "_contentWrapper_183ru_12", y2 = "_innerContent_183ru_25", w2 = "_socialMedia_183ru_43", C2 = "_discord_183ru_61", x2 = "_Whatsapp_183ru_66", nn = { ConnectWrapper: g2, contentWrapper: v2, innerContent: y2, socialMedia: w2, discord: C2, Whatsapp: x2 }, k2 = "/assets/image-8f34718b.svg", _2 = () => u.jsx("svg", { xmlns: "http://www.w3.org/2000/svg", width: "25", height: "25", viewBox: "0 0 25 25", fill: "none", children: u.jsx("path", { d: "M20.7835 3.91242C19.673 2.79074 18.3503 1.90139 16.8926 1.29624C15.4348 0.691098 13.8712 0.382269 12.2928 0.387767C5.67954 0.387767 0.289616 5.77769 0.289616 12.391C0.289616 14.5106 0.846777 16.5697 1.88843 18.3865L0.192719 24.6122L6.55162 22.9407C8.30789 23.8975 10.2822 24.4062 12.2928 24.4062C18.9061 24.4062 24.296 19.0163 24.296 12.4031C24.296 9.19333 23.0484 6.1774 20.7835 3.91242ZM12.2928 22.3714C10.5002 22.3714 8.74393 21.8869 7.20568 20.9785L6.84231 20.7605L3.06331 21.7537L4.06862 18.0716L3.82638 17.6961C2.83045 16.1057 2.30162 14.2674 2.30024 12.391C2.30024 6.89202 6.78175 2.4105 12.2807 2.4105C14.9454 2.4105 17.4526 3.45215 19.33 5.34166C20.2596 6.26698 20.9963 7.36762 21.4973 8.57976C21.9984 9.7919 22.2539 11.0914 22.249 12.4031C22.2733 17.902 17.7917 22.3714 12.2928 22.3714ZM17.7675 14.9103C17.4647 14.7649 15.987 14.0382 15.7206 13.9292C15.442 13.8323 15.2482 13.7839 15.0423 14.0745C14.8364 14.3774 14.2671 15.0556 14.0975 15.2494C13.9279 15.4553 13.7463 15.4796 13.4435 15.3221C13.1407 15.1768 12.1717 14.8497 11.0331 13.8323C10.1368 13.0329 9.54333 12.0518 9.36165 11.749C9.19208 11.4462 9.33743 11.2887 9.49488 11.1313C9.62812 10.998 9.79769 10.78 9.94304 10.6105C10.0884 10.4409 10.1489 10.3077 10.2458 10.1139C10.3427 9.90795 10.2943 9.73838 10.2216 9.59304C10.1489 9.44769 9.54333 7.97 9.30109 7.36439C9.05884 6.78301 8.80449 6.85568 8.62281 6.84357H8.04142C7.83551 6.84357 7.5206 6.91624 7.24202 7.21905C6.97555 7.52185 6.20037 8.24858 6.20037 9.72627C6.20037 11.204 7.27835 12.6332 7.4237 12.827C7.56905 13.0329 9.54333 16.0609 12.5472 17.357C13.2618 17.6719 13.8189 17.8536 14.255 17.9868C14.9696 18.2169 15.6237 18.1806 16.1445 18.1079C16.7259 18.0231 17.925 17.3812 18.1672 16.6787C18.4216 15.9762 18.4216 15.3827 18.3368 15.2494C18.252 15.1162 18.0703 15.0556 17.7675 14.9103Z", fill: "#AE59FF" }) }), S2 = () => u.jsx("svg", { xmlns: "http://www.w3.org/2000/svg", width: "25", height: "25", viewBox: "0 0 28 21", fill: "none", children: u.jsx("path", { d: "M23.3212 2.07948C21.6427 1.297 19.8253 0.729073 17.9322 0.400937C17.9156 0.400406 17.8991 0.403521 17.8838 0.410063C17.8686 0.416604 17.8549 0.426414 17.8439 0.438799C17.6167 0.855279 17.3517 1.39796 17.175 1.81444C15.167 1.51155 13.125 1.51155 11.1171 1.81444C10.9404 1.38534 10.6754 0.855279 10.4356 0.438799C10.423 0.413558 10.3851 0.400937 10.3472 0.400937C8.45415 0.729073 6.6494 1.297 4.95824 2.07948C4.94562 2.07948 4.933 2.0921 4.92038 2.10472C1.48758 7.2413 0.541035 12.2391 1.008 17.1863C1.008 17.2116 1.02062 17.2368 1.04586 17.2494C3.31757 18.9154 5.50093 19.925 7.65905 20.5939C7.69691 20.6065 7.73478 20.5939 7.7474 20.5687C8.25222 19.8745 8.70656 19.1425 9.0978 18.3727C9.12304 18.3222 9.0978 18.2717 9.04732 18.2591C8.32794 17.9814 7.64643 17.6533 6.97754 17.2747C6.92706 17.2494 6.92706 17.1737 6.96492 17.1359C7.10374 17.0349 7.24257 16.9213 7.3814 16.8203C7.40664 16.7951 7.4445 16.7951 7.46974 16.8077C11.8112 18.7891 16.4935 18.7891 20.7845 16.8077C20.8097 16.7951 20.8476 16.7951 20.8728 16.8203C21.0116 16.9339 21.1505 17.0349 21.2893 17.1485C21.3398 17.1863 21.3398 17.2621 21.2767 17.2873C20.6204 17.6785 19.9263 17.9941 19.2069 18.2717C19.1564 18.2843 19.1438 18.3474 19.1564 18.3853C19.5603 19.1551 20.0146 19.8871 20.5068 20.5813C20.5447 20.5939 20.5825 20.6065 20.6204 20.5939C22.7911 19.925 24.9745 18.9154 27.2462 17.2494C27.2715 17.2368 27.2841 17.2116 27.2841 17.1863C27.8394 11.4692 26.3628 6.50931 23.3717 2.10472C23.3591 2.0921 23.3465 2.07948 23.3212 2.07948ZM9.75407 14.17C8.45415 14.17 7.36878 12.9711 7.36878 11.4944C7.36878 10.0178 8.42891 8.81888 9.75407 8.81888C11.0919 8.81888 12.152 10.0305 12.1394 11.4944C12.1394 12.9711 11.0792 14.17 9.75407 14.17ZM18.5506 14.17C17.2507 14.17 16.1653 12.9711 16.1653 11.4944C16.1653 10.0178 17.2255 8.81888 18.5506 8.81888C19.8884 8.81888 20.9485 10.0305 20.9359 11.4944C20.9359 12.9711 19.8884 14.17 18.5506 14.17Z", fill: "white" }) }), E2 = () => u.jsxs("div", { id: "contact", className: nn.ConnectWrapper, children: [u.jsx("h1", { children: "Connect With Us" }), u.jsxs("div", { className: nn.contentWrapper, children: [u.jsxs("div", { className: nn.innerContent, children: [u.jsxs("div", { children: [u.jsxs("h2", { children: ["Join µLearn ", M.collegeCode, " Discord server!"] }), u.jsx("p", { children: "Do join our campus community discord server, so you don’t miss out any of the updates." })] }), u.jsxs("div", { className: nn.socialMedia, children: [u.jsxs("a", { href: M.discordLink, className: nn.discord, target: "_blank", children: [u.jsx(S2, {}), "Join Discord"] }), u.jsxs("a", { href: M.whatsAppLink, className: nn.Whatsapp, children: [u.jsx(_2, {}), "Join Whatsapp"] })] })] }), u.jsx("div", { children: u.jsx("img", { src: k2, alt: "" }) })] })] }), N2 = "_FooterWrapper_bv94u_1", j2 = "_topFooter_bv94u_13", L2 = "_socialMedia_bv94u_28", P2 = "_line_bv94u_47", R2 = "_ptag_bv94u_53", Kn = { FooterWrapper: N2, topFooter: j2, socialMedia: L2, line: P2, ptag: R2 }, M2 = () => u.jsx("svg", { xmlns: "http://www.w3.org/2000/svg", width: "22", height: "22", viewBox: "0 0 26 27", fill: "none", children: u.jsx("path", { d: "M22.8903 0.624268C23.6492 0.624268 24.377 0.925724 24.9136 1.46232C25.4502 1.99892 25.7516 2.7267 25.7516 3.48556V23.5146C25.7516 24.2735 25.4502 25.0013 24.9136 25.5378C24.377 26.0744 23.6492 26.3759 22.8903 26.3759H2.86129C2.10243 26.3759 1.37465 26.0744 0.838053 25.5378C0.301457 25.0013 0 24.2735 0 23.5146V3.48556C0 2.7267 0.301457 1.99892 0.838053 1.46232C1.37465 0.925724 2.10243 0.624268 2.86129 0.624268H22.8903ZM22.175 22.7993V15.2169C22.175 13.9799 21.6836 12.7936 20.809 11.919C19.9343 11.0443 18.7481 10.553 17.5111 10.553C16.2951 10.553 14.8787 11.2969 14.192 12.4128V10.8248H10.2005V22.7993H14.192V15.7462C14.192 14.6446 15.079 13.7433 16.1806 13.7433C16.7118 13.7433 17.2213 13.9543 17.5969 14.3299C17.9725 14.7055 18.1835 15.215 18.1835 15.7462V22.7993H22.175ZM5.55091 8.57866C6.18835 8.57866 6.79969 8.32544 7.25043 7.8747C7.70117 7.42396 7.95439 6.81262 7.95439 6.17518C7.95439 4.84467 6.88141 3.75738 5.55091 3.75738C4.90967 3.75738 4.29469 4.01211 3.84127 4.46554C3.38785 4.91896 3.13312 5.53394 3.13312 6.17518C3.13312 7.50568 4.22041 8.57866 5.55091 8.57866ZM7.53951 22.7993V10.8248H3.57662V22.7993H7.53951Z", fill: "#EBD7FF" }) }), z2 = () => u.jsx("svg", { xmlns: "http://www.w3.org/2000/svg", width: "22", height: "22", viewBox: "0 0 29 29", fill: "none", children: u.jsx("path", { d: "M8.41259 0.0239258H20.5725C25.2048 0.0239258 28.9686 3.7877 28.9686 8.42003V20.5799C28.9686 22.8067 28.084 24.9423 26.5094 26.5169C24.9348 28.0914 22.7993 28.976 20.5725 28.976H8.41259C3.78025 28.976 0.0164795 25.2122 0.0164795 20.5799V8.42003C0.0164795 6.19325 0.901067 4.05766 2.47564 2.48309C4.05022 0.908513 6.1858 0.0239258 8.41259 0.0239258ZM8.12306 2.91914C6.74092 2.91914 5.41539 3.46819 4.43807 4.44551C3.46074 5.42283 2.91169 6.74837 2.91169 8.13051V20.8694C2.91169 23.7502 5.24233 26.0808 8.12306 26.0808H20.862C22.2441 26.0808 23.5697 25.5318 24.547 24.5544C25.5243 23.5771 26.0734 22.2516 26.0734 20.8694V8.13051C26.0734 5.24978 23.7427 2.91914 20.862 2.91914H8.12306ZM22.0925 5.09054C22.5724 5.09054 23.0326 5.28119 23.372 5.62053C23.7113 5.95988 23.902 6.42014 23.902 6.90005C23.902 7.37996 23.7113 7.84021 23.372 8.17956C23.0326 8.51891 22.5724 8.70955 22.0925 8.70955C21.6125 8.70955 21.1523 8.51891 20.8129 8.17956C20.4736 7.84021 20.2829 7.37996 20.2829 6.90005C20.2829 6.42014 20.4736 5.95988 20.8129 5.62053C21.1523 5.28119 21.6125 5.09054 22.0925 5.09054ZM14.4925 7.26195C16.4122 7.26195 18.2532 8.02452 19.6106 9.38192C20.968 10.7393 21.7305 12.5803 21.7305 14.5C21.7305 16.4196 20.968 18.2606 19.6106 19.618C18.2532 20.9754 16.4122 21.738 14.4925 21.738C12.5729 21.738 10.7319 20.9754 9.37447 19.618C8.01708 18.2606 7.2545 16.4196 7.2545 14.5C7.2545 12.5803 8.01708 10.7393 9.37447 9.38192C10.7319 8.02452 12.5729 7.26195 14.4925 7.26195ZM14.4925 10.1572C13.3407 10.1572 12.2361 10.6147 11.4217 11.4291C10.6073 12.2436 10.1497 13.3482 10.1497 14.5C10.1497 15.6518 10.6073 16.7564 11.4217 17.5708C12.2361 18.3852 13.3407 18.8428 14.4925 18.8428C15.6443 18.8428 16.7489 18.3852 17.5634 17.5708C18.3778 16.7564 18.8353 15.6518 18.8353 14.5C18.8353 13.3482 18.3778 12.2436 17.5634 11.4291C16.7489 10.6147 15.6443 10.1572 14.4925 10.1572Z", fill: "white" }) }), T2 = () => u.jsxs("div", { className: Kn.FooterWrapper, children: [u.jsxs("div", { className: Kn.topFooter, children: [u.jsx(Um, {}), u.jsxs("p", { children: ["Reach us at", " ", u.jsx("a", { href: `mailto:${M.email}`, children: M.email })] }), u.jsxs("div", { children: [u.jsx("a", { target: "_blank", href: "https://mulearn.org/", children: "µLearn" }), u.jsx("a", { target: "_blank", href: "https://mulearn.org/announcements", children: "Events" }), u.jsx("a", { target: "_blank", href: "https://mulearn.org/gallery", children: "Gallery" }), u.jsx("a", { target: "_blank", href: "https://online.fliphtml5.com/egsqr/tlgc/", children: "Branding" })] })] }), u.jsxs("div", { className: Kn.socialMedia, children: [u.jsxs("a", { href: M.linkedIn, children: [u.jsx(M2, {}), "LinkedIn"] }), u.jsxs("a", { href: M.instagram, children: [u.jsx(z2, {}), "Instagram"] })] }), u.jsx("div", { className: Kn.line }), u.jsxs("div", { className: Kn.ptag, children: [" ", u.jsx("p", { children: "Copyright © 2025. All Rights Reserved." }), u.jsx("p", { children: "µLearn Foundation." })] })] }), I2 = "_AboutWrapper_1rnw5_1", D2 = "_AchievementsWrapper_1rnw5_13", $2 = "_achievementsContainer_1rnw5_29", F2 = "_achievementCard_1rnw5_38", O2 = "_achievementImage_1rnw5_55", A2 = "_achievementInfo_1rnw5_73", Gn = { AboutWrapper: I2, AchievementsWrapper: D2, achievementsContainer: $2, achievementCard: F2, achievementImage: O2, achievementInfo: A2 }, W2 = () => {
+    v.useEffect(() => {
+      const scriptId = "elfsight-platform-script";
+      if (!document.getElementById(scriptId)) {
+        const script = document.createElement("script");
+        script.id = scriptId;
+        script.src = "https://elfsightcdn.com/platform.js";
+        script.async = true;
+        document.body.appendChild(script);
+      } else {
+        if (window.ElfsightApp && typeof window.ElfsightApp.init === "function") {
+          try { window.ElfsightApp.init(); } catch (err) { }
+        } else if (window.Elfsight && typeof window.Elfsight.init === "function") {
+          try { window.Elfsight.init(); } catch (err) { }
+        }
+      }
+    }, []);
+
+    return u.jsxs("div", {
+      id: "achievements",
+      className: Gn.AchievementsWrapper,
+      style: { display: "flex", flexDirection: "column", alignItems: "center", width: "100%" },
+      children: [
+        u.jsx("h1", { children: "Achievements" }),
+        u.jsxs("div", {
+          className: Gn.achievementsContainer,
+          style: { width: "100%", display: "flex", flexDirection: "column", alignItems: "center", gap: "30px" },
+          children: [
+            M.achievements.map((n, r) => u.jsxs("div", {
+              className: Gn.achievementCard,
+              children: [
+                u.jsx("div", { className: Gn.achievementImage, style: { height: "auto", minHeight: "200px" }, children: u.jsx("img", { src: n.image, alt: n.title }) }),
+                u.jsxs("div", { className: Gn.achievementInfo, children: [u.jsx("h3", { children: n.title }), u.jsx("p", { children: n.description })] })
+              ]
+            }, r)),
+            u.jsx("div", {
+              style: { width: "100%", maxWidth: "1000px", marginTop: "10px" },
+              children: u.jsx("div", {
+                className: "elfsight-app-2bcb43f2-2d77-4856-a12d-e17a007e502b",
+                "data-elfsight-app-lazy": "true"
+              })
+            })
+          ]
+        })
+      ]
+    });
+  }, B2 = "_linkTreeWrapper_1758p_1", U2 = "_container_1758p_15", V2 = "_backButton_1758p_23", H2 = "_profileSection_1758p_52", Q2 = "_profileImage_1758p_64", K2 = "_memberName_1758p_92", G2 = "_memberRole_1758p_104", Z2 = "_memberBio_1758p_126", Y2 = "_infoSection_1758p_138", X2 = "_infoItem_1758p_148", J2 = "_infoLabel_1758p_172", q2 = "_infoValue_1758p_180", b2 = "_emailLink_1758p_189", eh = "_phoneLink_1758p_189", th = "_actionSection_1758p_201", nh = "_composeEmailBtn_1758p_206", rh = "_brandingSection_1758p_236", lh = "_brandLink_1758p_258", ih = "_socialLinks_1758p_314", oh = "_socialLink_1758p_314", ah = "_customLink_1758p_324", sh = "_linkContent_1758p_328", uh = "_socialLinksSection_1758p_336", ch = "_customLinksSection_1758p_337", dh = "_socialSection_1758p_540", fh = "_socialTitle_1758p_544", ph = "_loadingState_1758p_712", mh = "_errorState_1758p_713", ue = { linkTreeWrapper: B2, container: U2, backButton: V2, profileSection: H2, profileImage: Q2, memberName: K2, memberRole: G2, memberBio: Z2, infoSection: Y2, infoItem: X2, infoLabel: J2, infoValue: q2, emailLink: b2, phoneLink: eh, actionSection: th, composeEmailBtn: nh, brandingSection: rh, brandLink: lh, socialLinks: ih, socialLink: oh, customLink: ah, linkContent: sh, socialLinksSection: uh, customLinksSection: ch, socialSection: dh, socialTitle: fh, loadingState: ph, errorState: mh }, hh = "1acu2AnsIu-4I76I-Pkg0xwTQV_mSQMlrft-oZ8fpJmA", gh = "0", vh = `https://docs.google.com/spreadsheets/d/${hh}/gviz/tq?tqx=out:csv&gid=${gh}`, yh = e => {
+    const t = []; let n = [], r = "", l = !1; for (let i = 0; i < e.length; i++) {
+      const o = e[i], a = e[i + 1]; o === '"' && l && a === '"' ? (r += '"', i++) : o === '"' ? l = !l : o === "," && !l ? (n.push(r), r = "") : o === `
 `&& !l ? (n.push(r), t.push(n), n = [], r = "") : o === "\r" && a === `
 `&& !l ? (n.push(r), t.push(n), n = [], r = "", i++) : r += o
-  } return (r || n.length > 0) && (n.push(r), t.push(n)), t
-}, nu = async (e = !1) => { try { const t = await fetch(vh, { method: "GET" }); if (!t.ok) throw new Error(`Failed to fetch data: ${t.status} ${t.statusText}`); const n = await t.text(), r = yh(n); if (r.length > 0 && (console.log("CSV Headers:", r[0]), console.log("Number of columns:", r[0].length)), r.length < 2) throw new Error("No data found in the sheet"); const l = r.slice(1), i = l.filter(o => { var a; return o.length > 0 && ((a = o[0]) == null ? void 0 : a.trim()) }).map(o => { var d, h, g, y, C, x, S, p, f, m; const a = []; if ((d = o[10]) != null && d.trim()) { const w = o[10].trim(); a.push({ name: "Instagram", url: w.startsWith("http") ? w : `https://instagram.com/${w.replace("@", "")}`, icon: "instagram", color: "#E4405F" }) } if ((h = o[11]) != null && h.trim()) { const w = o[11].trim(); a.push({ name: "LinkedIn", url: w.startsWith("http") ? w : `https://linkedin.com/in/${w}`, icon: "linkedin", color: "#0077B5" }) } if ((g = o[12]) != null && g.trim()) { const w = o[12].trim(); a.push({ name: "Github", url: w.startsWith("http") ? w : `https://github.com/${w}`, icon: "github", color: "#333333" }) } const c = { id: (y = o[0]) != null && y.trim() ? o[0].trim().toLowerCase().replace(/\s+/g, "-") : ((C = o[1]) == null ? void 0 : C.trim().toLowerCase().replace(/\s+/g, "-")) || "", name: ((x = o[1]) == null ? void 0 : x.trim()) || "", gender: "", role: ((S = o[4]) == null ? void 0 : S.trim()) || "", team: ((p = o[5]) == null ? void 0 : p.trim()) || "", email: "", image: ((f = o[9]) == null ? void 0 : f.trim()) || "", muId: ((m = o[13]) == null ? void 0 : m.trim()) || "", socialLinks: a }; return l.indexOf(o) < 3 && (console.log("Row data:", o), console.log("Member parsed:", c)), c }); return console.log(`Fetched ${i.length} team members from Google Sheets`), i } catch (t) { throw console.error("Error fetching team members from Google Sheets:", t), t } }; let Wt = null, Zn = null; const wh = () => { const [e, t] = v.useState(Wt || []), [n, r] = v.useState(!Wt), [l, i] = v.useState(null), o = async () => { try { Wt || r(!0), i(null); const s = await nu(!1); Wt = s, t(s), console.log("Successfully loaded team members from Google Sheets") } catch (s) { const c = s instanceof Error ? s.message : "Failed to fetch team members"; i(c), console.error("Error fetching team members:", s) } finally { r(!1) } }, a = async () => { r(!0), await o() }; return v.useEffect(() => { let s = !0; if (Wt) { t(Wt), r(!1); return } if (Zn) { Zn.then(d => { s && (t(d), r(!1)) }).catch(d => { if (s) { const h = d instanceof Error ? d.message : "Failed to fetch team members"; i(h), r(!1), console.error("Google Sheets fetch failed:", d) } }); return } return (async () => { try { Zn = nu(!1); const d = await Zn; Wt = d, s && (t(d), r(!1), console.log("Successfully loaded team members from Google Sheets")) } catch (d) { if (s) { const h = d instanceof Error ? d.message : "Failed to fetch team members"; i(h), r(!1), console.error("Google Sheets fetch failed:", d) } } finally { Zn = null } })(), () => { s = !1 } }, []), { teamMembers: e, loading: n, error: l, refetch: a } }, Id = [{ path: "amarnath", memberName: "Amarnath Sujith" }, { path: "chethas", memberName: "Chethas L Pramod" }, { path: "aswath", memberName: "Aswath S A" }, { path: "adithya", memberName: "Adithya R" }, { path: "ananya", memberName: "Ananya K" }, { path: "mohammed-hafeez", memberName: "Mohammed Hafeez" }, { path: "mihirima", memberName: "Mihirima A R" }, { path: "amna", memberName: "Amna Fathima S" }, { path: "niveditha", memberName: "Niveditha Gopakumar" }, { path: "bhagyashree", memberName: "Bhagyasree" }, { path: "anjana", memberName: "Anjana MS" }, { path: "anza", memberName: "Anza S" }, { path: "akshay", memberName: "Akshay G" }, { path: "aneez", memberName: "Aneez Rahuman M" }, { path: "arjun-tk", memberName: "Arjun TK" }, { path: "arjun-g", memberName: "Arjun G" }, { path: "teny", memberName: "Teny Catherine Tony" }, { path: "sooryakanth", memberName: "Sooryakanth S" }, { path: "mohammed-irfan", memberName: "Mohammed Irfan P" }, { path: "fathima", memberName: "Fathima S" }, { path: "adwaith", memberName: "Adwaith S" }, { path: "pranav", memberName: "Pranav g nath" }, { path: "sruthy", memberName: "Sruthy N S" }, { path: "theertha", memberName: "Theertha. S. Nair" }, { path: "midhun", memberName: "Midhun Das" }, { path: "aadil", memberName: "Aadil Mohamed A" }, { path: "sanjay", memberName: "Sanjay krishna" }, { path: "richard", memberName: "Richard S" }, { path: "vaishakh", memberName: "Vaishakh V S" }, { path: "abhishek", memberName: "Abhishek P" }, { path: "aswin-s", memberName: "Aswin S" }, { path: "sreerag", memberName: "Sreerag Satheesh S" }, { path: "adarsh", memberName: "Adarsh Dev M.R." }], Ch = e => Id.some(t => t.path === e), xh = e => { const t = Id.find(n => n.path === e); return t == null ? void 0 : t.memberName }; function kh(e) { return Tr({ tag: "svg", attr: { viewBox: "0 0 496 512" }, child: [{ tag: "path", attr: { d: "M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z" } }] })(e) } function _h(e) { return Tr({ tag: "svg", attr: { viewBox: "0 0 448 512" }, child: [{ tag: "path", attr: { d: "M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z" } }] })(e) } function Sh(e) { return Tr({ tag: "svg", attr: { viewBox: "0 0 448 512" }, child: [{ tag: "path", attr: { d: "M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z" } }] })(e) } function Oi(e) { return Tr({ tag: "svg", attr: { viewBox: "0 0 512 512" }, child: [{ tag: "path", attr: { d: "M432,320H400a16,16,0,0,0-16,16V448H64V128H208a16,16,0,0,0,16-16V80a16,16,0,0,0-16-16H48A48,48,0,0,0,0,112V464a48,48,0,0,0,48,48H400a48,48,0,0,0,48-48V336A16,16,0,0,0,432,320ZM488,0h-128c-21.37,0-32.05,25.91-17,41l35.73,35.73L135,320.37a24,24,0,0,0,0,34L157.67,377a24,24,0,0,0,34,0L435.28,133.32,471,169c15,15,41,4.5,41-17V24A24,24,0,0,0,488,0Z" } }] })(e) } const Eh = "/assets/MulearnUCEK-b139c51f.png", Nh = "_spinnerContainer_ai6x1_1", jh = "_spinner_ai6x1_1", Lh = "_spin_ai6x1_1", ru = { spinnerContainer: Nh, spinner: jh, spin: Lh }, Ph = ({ size: e = 40, color: t = "#667eea" }) => u.jsx("div", { className: ru.spinnerContainer, children: u.jsx("div", { className: ru.spinner, style: { width: `${e}px`, height: `${e}px`, borderTopColor: t } }) }), Rh = () => { var h; const { memberName: e } = Bp(), { teamMembers: t, loading: n, error: r } = wh(), [l, i] = v.useState(!1), o = v.useRef(0), a = 3; if (!v.useMemo(() => e ? Ch(e) : !1, [e]) && !n) return u.jsx(tm, { to: "/#team", replace: !0 }); const c = v.useMemo(() => e ? xh(e) : void 0, [e]), d = v.useMemo(() => c ? t.find(y => y.name.toLowerCase().trim() === c.toLowerCase().trim()) : void 0, [t, c]); return v.useMemo(() => { e && (console.log("Route path:", e), console.log("Looking for member name:", c), console.log("Found member:", d), d && (console.log("Member MuID:", d.muId), console.log("Member full data:", JSON.stringify(d, null, 2)))) }, [e, c, d]), n ? u.jsx("div", { className: ue.linkTreeWrapper, children: u.jsx(Ph, { size: 60, color: "#667eea" }) }) : r ? u.jsx("div", { className: ue.linkTreeWrapper, children: u.jsx("div", { className: ue.container, children: u.jsxs("div", { className: ue.errorState, children: [u.jsx("h2", { children: "Error loading team data" }), u.jsx("p", { children: r }), u.jsx("a", { href: "/#team", children: "← Back to Team" })] }) }) }) : d ? u.jsx("div", { className: ue.linkTreeWrapper, children: u.jsxs("div", { className: ue.container, children: [u.jsx("div", { style: { textAlign: "center", marginBottom: "10px", marginTop: "0" }, children: u.jsx(oi, { to: "/", style: { display: "inline-block" }, children: u.jsx("img", { src: Eh, alt: "μLearn UCEK", style: { height: "50px", width: "auto", cursor: "pointer" } }) }) }), u.jsx("div", { className: ue.infoSection, children: u.jsxs("div", { style: { textAlign: "center", paddingBottom: "0" }, children: [u.jsx("div", { className: ue.profileImage, children: l ? u.jsx("div", { style: { width: "88px", height: "88px", borderRadius: "50%", background: "#242124", display: "flex", alignItems: "center", justifyContent: "center", color: "white", fontSize: "32px", fontWeight: "bold" }, children: ((h = d.name) == null ? void 0 : h.split(" ").map(g => g[0]).join("").toUpperCase().slice(0, 2)) || "??" }) : u.jsx("img", { src: `/${d.image.replace(/\s+/g, "%20")}`, alt: d.name, loading: "lazy", style: { width: "88px", height: "88px" }, onError: g => { if (o.current += 1, console.log(`Image load attempt ${o.current} failed for:`, d.image), o.current < a) { const y = g.currentTarget; setTimeout(() => { y.src = `/${d.image}` }, 500) } else console.log("Max retries reached. Stopping image load attempts."), i(!0) } }) }), u.jsx("h1", { style: { fontSize: "1.4rem", margin: "8px 0 4px" }, children: d.name }), d.muId && u.jsx("p", { style: { fontSize: "0.75rem", color: "#666", fontWeight: "500", margin: "0 0 8px 0" }, children: d.muId }), u.jsxs("div", { style: { display: "flex", gap: "8px", justifyContent: "center", marginTop: "12px" }, children: [d.team && d.team !== "μ" && u.jsx("span", { style: { fontSize: "0.85rem", color: "#555", fontWeight: "600", padding: "6px 16px", background: "rgba(102, 126, 234, 0.1)", borderRadius: "20px", border: "1px solid rgba(102, 126, 234, 0.2)" }, children: d.team }), d.role && u.jsx("span", { style: { fontSize: "0.85rem", color: "#555", fontWeight: "600", padding: "6px 16px", background: "rgba(118, 75, 162, 0.1)", borderRadius: "20px", border: "1px solid rgba(118, 75, 162, 0.2)" }, children: d.role })] })] }) }), d.socialLinks && d.socialLinks.length > 0 && u.jsxs("div", { className: ue.socialSection, children: [u.jsx("h3", { className: ue.socialTitle, children: "Connect with me" }), u.jsx("div", { className: ue.socialLinks, children: d.socialLinks.map((g, y) => { let C = Oi; switch (g.icon.toLowerCase()) { case "instagram": C = _h; break; case "linkedin": C = Sh; break; case "github": C = kh; break; case "mulearn": C = Oi; break; default: C = Oi }return u.jsx("a", { href: g.url, target: "_blank", rel: "noopener noreferrer", className: ue.socialLink, style: { "--social-color": g.color }, children: u.jsx(C, {}) }, y) }) })] }), u.jsx("div", { style: { textAlign: "center", marginTop: "4px" }, children: u.jsx("a", { href: "/#home", className: ue.brandLink, children: "μLearn UCEK" }) })] }) }) : u.jsx("div", { className: ue.linkTreeWrapper, children: u.jsx("div", { className: ue.container, children: u.jsxs("div", { className: ue.errorState, children: [u.jsx("h2", { children: "Member not found" }), u.jsxs("p", { children: ["Looking for: ", e] }), u.jsxs("p", { children: ["Available IDs: ", t.map(g => g.id).join(", ")] }), u.jsx("a", { href: "/#team", children: "← Back to Team" })] }) }) }) }, Mh = () => u.jsxs(u.Fragment, { children: [u.jsx(y0, {}), u.jsx(x0, {}), u.jsx(W2, {}), u.jsx(M0, {}), u.jsx(A0, {}), u.jsx(H0, {}), u.jsx(Y0, {}), u.jsx(h2, {}), u.jsx(E2, {}), u.jsx(T2, {})] }); function zh() { const t = tt().pathname == "/"; return u.jsxs("div", { className: "appWrapper", children: [t && u.jsx(o0, {}), u.jsxs(rm, { children: [u.jsx(ml, { path: "/blender-workshop", element: u.jsx(Th, {}) }), u.jsx(ml, { path: "/", element: u.jsx(Mh, {}) }), u.jsx(ml, { path: "/team/:memberName", element: u.jsx(Rh, {}) })] })] }) } function Th() { return window.location.href = "https://docs.google.com/forms/d/e/1FAIpQLSc1D0sBBioSchEqV_lBfCYBsV5jhZ-Nj0SJZeYo6Iu_r-GEsQ/viewform", u.jsxs("div", { className: "redirect-main", children: [u.jsx("div", { className: "progress" }), u.jsx("br", {})] }) } Ai.createRoot(document.getElementById("root")).render(u.jsx(qe.StrictMode, { children: u.jsx(jm, { children: u.jsx(zh, {}) }) }));
+    } return (r || n.length > 0) && (n.push(r), t.push(n)), t
+  }, nu = async (e = !1) => { try { const t = await fetch(vh, { method: "GET" }); if (!t.ok) throw new Error(`Failed to fetch data: ${t.status} ${t.statusText}`); const n = await t.text(), r = yh(n); if (r.length > 0 && (console.log("CSV Headers:", r[0]), console.log("Number of columns:", r[0].length)), r.length < 2) throw new Error("No data found in the sheet"); const l = r.slice(1), i = l.filter(o => { var a; return o.length > 0 && ((a = o[0]) == null ? void 0 : a.trim()) }).map(o => { var d, h, g, y, C, x, S, p, f, m; const a = []; if ((d = o[10]) != null && d.trim()) { const w = o[10].trim(); a.push({ name: "Instagram", url: w.startsWith("http") ? w : `https://instagram.com/${w.replace("@", "")}`, icon: "instagram", color: "#E4405F" }) } if ((h = o[11]) != null && h.trim()) { const w = o[11].trim(); a.push({ name: "LinkedIn", url: w.startsWith("http") ? w : `https://linkedin.com/in/${w}`, icon: "linkedin", color: "#0077B5" }) } if ((g = o[12]) != null && g.trim()) { const w = o[12].trim(); a.push({ name: "Github", url: w.startsWith("http") ? w : `https://github.com/${w}`, icon: "github", color: "#333333" }) } const c = { id: (y = o[0]) != null && y.trim() ? o[0].trim().toLowerCase().replace(/\s+/g, "-") : ((C = o[1]) == null ? void 0 : C.trim().toLowerCase().replace(/\s+/g, "-")) || "", name: ((x = o[1]) == null ? void 0 : x.trim()) || "", gender: "", role: ((S = o[4]) == null ? void 0 : S.trim()) || "", team: ((p = o[5]) == null ? void 0 : p.trim()) || "", email: "", image: ((f = o[9]) == null ? void 0 : f.trim()) || "", muId: ((m = o[13]) == null ? void 0 : m.trim()) || "", socialLinks: a }; return l.indexOf(o) < 3 && (console.log("Row data:", o), console.log("Member parsed:", c)), c }); return console.log(`Fetched ${i.length} team members from Google Sheets`), i } catch (t) { throw console.error("Error fetching team members from Google Sheets:", t), t } }; let Wt = null, Zn = null; const wh = () => { const [e, t] = v.useState(Wt || []), [n, r] = v.useState(!Wt), [l, i] = v.useState(null), o = async () => { try { Wt || r(!0), i(null); const s = await nu(!1); Wt = s, t(s), console.log("Successfully loaded team members from Google Sheets") } catch (s) { const c = s instanceof Error ? s.message : "Failed to fetch team members"; i(c), console.error("Error fetching team members:", s) } finally { r(!1) } }, a = async () => { r(!0), await o() }; return v.useEffect(() => { let s = !0; if (Wt) { t(Wt), r(!1); return } if (Zn) { Zn.then(d => { s && (t(d), r(!1)) }).catch(d => { if (s) { const h = d instanceof Error ? d.message : "Failed to fetch team members"; i(h), r(!1), console.error("Google Sheets fetch failed:", d) } }); return } return (async () => { try { Zn = nu(!1); const d = await Zn; Wt = d, s && (t(d), r(!1), console.log("Successfully loaded team members from Google Sheets")) } catch (d) { if (s) { const h = d instanceof Error ? d.message : "Failed to fetch team members"; i(h), r(!1), console.error("Google Sheets fetch failed:", d) } } finally { Zn = null } })(), () => { s = !1 } }, []), { teamMembers: e, loading: n, error: l, refetch: a } }, Id = [{ path: "amarnath", memberName: "Amarnath Sujith" }, { path: "chethas", memberName: "Chethas L Pramod" }, { path: "aswath", memberName: "Aswath S A" }, { path: "adithya", memberName: "Adithya R" }, { path: "ananya", memberName: "Ananya K" }, { path: "mohammed-hafeez", memberName: "Mohammed Hafeez" }, { path: "mihirima", memberName: "Mihirima A R" }, { path: "amna", memberName: "Amna Fathima S" }, { path: "niveditha", memberName: "Niveditha Gopakumar" }, { path: "bhagyashree", memberName: "Bhagyasree" }, { path: "anjana", memberName: "Anjana MS" }, { path: "anza", memberName: "Anza S" }, { path: "akshay", memberName: "Akshay G" }, { path: "aneez", memberName: "Aneez Rahuman M" }, { path: "arjun-tk", memberName: "Arjun TK" }, { path: "arjun-g", memberName: "Arjun G" }, { path: "teny", memberName: "Teny Catherine Tony" }, { path: "sooryakanth", memberName: "Sooryakanth S" }, { path: "mohammed-irfan", memberName: "Mohammed Irfan P" }, { path: "fathima", memberName: "Fathima S" }, { path: "adwaith", memberName: "Adwaith S" }, { path: "pranav", memberName: "Pranav g nath" }, { path: "sruthy", memberName: "Sruthy N S" }, { path: "theertha", memberName: "Theertha. S. Nair" }, { path: "midhun", memberName: "Midhun Das" }, { path: "aadil", memberName: "Aadil Mohamed A" }, { path: "sanjay", memberName: "Sanjay krishna" }, { path: "richard", memberName: "Richard S" }, { path: "vaishakh", memberName: "Vaishakh V S" }, { path: "abhishek", memberName: "Abhishek P" }, { path: "aswin-s", memberName: "Aswin S" }, { path: "sreerag", memberName: "Sreerag Satheesh S" }, { path: "adarsh", memberName: "Adarsh Dev M.R." }], Ch = e => Id.some(t => t.path === e), xh = e => { const t = Id.find(n => n.path === e); return t == null ? void 0 : t.memberName }; function kh(e) { return Tr({ tag: "svg", attr: { viewBox: "0 0 496 512" }, child: [{ tag: "path", attr: { d: "M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z" } }] })(e) } function _h(e) { return Tr({ tag: "svg", attr: { viewBox: "0 0 448 512" }, child: [{ tag: "path", attr: { d: "M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z" } }] })(e) } function Sh(e) { return Tr({ tag: "svg", attr: { viewBox: "0 0 448 512" }, child: [{ tag: "path", attr: { d: "M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z" } }] })(e) } function Oi(e) { return Tr({ tag: "svg", attr: { viewBox: "0 0 512 512" }, child: [{ tag: "path", attr: { d: "M432,320H400a16,16,0,0,0-16,16V448H64V128H208a16,16,0,0,0,16-16V80a16,16,0,0,0-16-16H48A48,48,0,0,0,0,112V464a48,48,0,0,0,48,48H400a48,48,0,0,0,48-48V336A16,16,0,0,0,432,320ZM488,0h-128c-21.37,0-32.05,25.91-17,41l35.73,35.73L135,320.37a24,24,0,0,0,0,34L157.67,377a24,24,0,0,0,34,0L435.28,133.32,471,169c15,15,41,4.5,41-17V24A24,24,0,0,0,488,0Z" } }] })(e) } const Eh = "/assets/MulearnUCEK-b139c51f.png", Nh = "_spinnerContainer_ai6x1_1", jh = "_spinner_ai6x1_1", Lh = "_spin_ai6x1_1", ru = { spinnerContainer: Nh, spinner: jh, spin: Lh }, Ph = ({ size: e = 40, color: t = "#667eea" }) => u.jsx("div", { className: ru.spinnerContainer, children: u.jsx("div", { className: ru.spinner, style: { width: `${e}px`, height: `${e}px`, borderTopColor: t } }) }), Rh = () => { var h; const { memberName: e } = Bp(), { teamMembers: t, loading: n, error: r } = wh(), [l, i] = v.useState(!1), o = v.useRef(0), a = 3; if (!v.useMemo(() => e ? Ch(e) : !1, [e]) && !n) return u.jsx(tm, { to: "/#team", replace: !0 }); const c = v.useMemo(() => e ? xh(e) : void 0, [e]), d = v.useMemo(() => c ? t.find(y => y.name.toLowerCase().trim() === c.toLowerCase().trim()) : void 0, [t, c]); return v.useMemo(() => { e && (console.log("Route path:", e), console.log("Looking for member name:", c), console.log("Found member:", d), d && (console.log("Member MuID:", d.muId), console.log("Member full data:", JSON.stringify(d, null, 2)))) }, [e, c, d]), n ? u.jsx("div", { className: ue.linkTreeWrapper, children: u.jsx(Ph, { size: 60, color: "#667eea" }) }) : r ? u.jsx("div", { className: ue.linkTreeWrapper, children: u.jsx("div", { className: ue.container, children: u.jsxs("div", { className: ue.errorState, children: [u.jsx("h2", { children: "Error loading team data" }), u.jsx("p", { children: r }), u.jsx("a", { href: "/#team", children: "← Back to Team" })] }) }) }) : d ? u.jsx("div", { className: ue.linkTreeWrapper, children: u.jsxs("div", { className: ue.container, children: [u.jsx("div", { style: { textAlign: "center", marginBottom: "10px", marginTop: "0" }, children: u.jsx(oi, { to: "/", style: { display: "inline-block" }, children: u.jsx("img", { src: Eh, alt: "μLearn UCEK", style: { height: "50px", width: "auto", cursor: "pointer" } }) }) }), u.jsx("div", { className: ue.infoSection, children: u.jsxs("div", { style: { textAlign: "center", paddingBottom: "0" }, children: [u.jsx("div", { className: ue.profileImage, children: l ? u.jsx("div", { style: { width: "88px", height: "88px", borderRadius: "50%", background: "#242124", display: "flex", alignItems: "center", justifyContent: "center", color: "white", fontSize: "32px", fontWeight: "bold" }, children: ((h = d.name) == null ? void 0 : h.split(" ").map(g => g[0]).join("").toUpperCase().slice(0, 2)) || "??" }) : u.jsx("img", { src: `/${d.image.replace(/\s+/g, "%20")}`, alt: d.name, loading: "lazy", style: { width: "88px", height: "88px" }, onError: g => { if (o.current += 1, console.log(`Image load attempt ${o.current} failed for:`, d.image), o.current < a) { const y = g.currentTarget; setTimeout(() => { y.src = `/${d.image}` }, 500) } else console.log("Max retries reached. Stopping image load attempts."), i(!0) } }) }), u.jsx("h1", { style: { fontSize: "1.4rem", margin: "8px 0 4px" }, children: d.name }), d.muId && u.jsx("p", { style: { fontSize: "0.75rem", color: "#666", fontWeight: "500", margin: "0 0 8px 0" }, children: d.muId }), u.jsxs("div", { style: { display: "flex", gap: "8px", justifyContent: "center", marginTop: "12px" }, children: [d.team && d.team !== "μ" && u.jsx("span", { style: { fontSize: "0.85rem", color: "#555", fontWeight: "600", padding: "6px 16px", background: "rgba(102, 126, 234, 0.1)", borderRadius: "20px", border: "1px solid rgba(102, 126, 234, 0.2)" }, children: d.team }), d.role && u.jsx("span", { style: { fontSize: "0.85rem", color: "#555", fontWeight: "600", padding: "6px 16px", background: "rgba(118, 75, 162, 0.1)", borderRadius: "20px", border: "1px solid rgba(118, 75, 162, 0.2)" }, children: d.role })] })] }) }), d.socialLinks && d.socialLinks.length > 0 && u.jsxs("div", { className: ue.socialSection, children: [u.jsx("h3", { className: ue.socialTitle, children: "Connect with me" }), u.jsx("div", { className: ue.socialLinks, children: d.socialLinks.map((g, y) => { let C = Oi; switch (g.icon.toLowerCase()) { case "instagram": C = _h; break; case "linkedin": C = Sh; break; case "github": C = kh; break; case "mulearn": C = Oi; break; default: C = Oi }return u.jsx("a", { href: g.url, target: "_blank", rel: "noopener noreferrer", className: ue.socialLink, style: { "--social-color": g.color }, children: u.jsx(C, {}) }, y) }) })] }), u.jsx("div", { style: { textAlign: "center", marginTop: "4px" }, children: u.jsx("a", { href: "/#home", className: ue.brandLink, children: "μLearn UCEK" }) })] }) }) : u.jsx("div", { className: ue.linkTreeWrapper, children: u.jsx("div", { className: ue.container, children: u.jsxs("div", { className: ue.errorState, children: [u.jsx("h2", { children: "Member not found" }), u.jsxs("p", { children: ["Looking for: ", e] }), u.jsxs("p", { children: ["Available IDs: ", t.map(g => g.id).join(", ")] }), u.jsx("a", { href: "/#team", children: "← Back to Team" })] }) }) }) }, Mh = () => u.jsxs(u.Fragment, { children: [u.jsx(y0, {}), u.jsx(x0, {}), u.jsx(W2, {}), u.jsx(M0, {}), u.jsx(A0, {}), u.jsx(H0, {}), u.jsx(Y0, {}), u.jsx(h2, {}), u.jsx(E2, {}), u.jsx(T2, {})] }); function zh() { const t = tt().pathname == "/"; return u.jsxs("div", { className: "appWrapper", children: [t && u.jsx(o0, {}), u.jsxs(rm, { children: [u.jsx(ml, { path: "/blender-workshop", element: u.jsx(Th, {}) }), u.jsx(ml, { path: "/", element: u.jsx(Mh, {}) }), u.jsx(ml, { path: "/team/:memberName", element: u.jsx(Rh, {}) })] })] }) } function Th() { return window.location.href = "https://docs.google.com/forms/d/e/1FAIpQLSc1D0sBBioSchEqV_lBfCYBsV5jhZ-Nj0SJZeYo6Iu_r-GEsQ/viewform", u.jsxs("div", { className: "redirect-main", children: [u.jsx("div", { className: "progress" }), u.jsx("br", {})] }) } Ai.createRoot(document.getElementById("root")).render(u.jsx(qe.StrictMode, { children: u.jsx(jm, { children: u.jsx(zh, {}) }) }));
