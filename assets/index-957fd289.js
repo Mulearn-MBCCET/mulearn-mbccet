@@ -596,13 +596,7 @@ renderTeamSec = (title, members) => u.jsxs("div", {
               alt: m.name,
               loading: "lazy",
               style: { width: "11rem", height: "11rem", borderRadius: "50%", objectFit: "cover", objectPosition: "center 15%" },
-              onError: (e) => {
-                const img = e.currentTarget;
-                if (!img.dataset.retried) {
-                  img.dataset.retried = "1";
-                  img.src = m.image.replace("/mulearn-mbccet-assets/", "/assets/");
-                }
-              }
+
             })
           }),
           u.jsxs("div", { className: N.teamNameDesignation, style: { marginTop: "12px" }, children: [
