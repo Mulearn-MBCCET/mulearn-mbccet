@@ -608,7 +608,7 @@ renderTeamSec = (title, members) => u.jsxs("div", {
     })
   ]
 }),
-h2 = () => u.jsxs("div", { className: N.teamWrapper, id: "team", style: { display: "flex", flexDirection: "column", alignItems: "center", width: "100%", paddingTop: "40px" }, children: [
+h2 = () => u.jsxs("div", { className: N.teamWrapper, id: "team", style: { display: "flex", flexDirection: "column", alignItems: "center", width: "100%", paddingTop: "40px", background: "url(/assets/line-2b02aac6.png) center 5% / 100% auto no-repeat, url(/assets/line2-b0779cc1.png) center 30% / 100% auto no-repeat, url(/assets/line-2b02aac6.png) center 55% / 100% auto no-repeat, url(/assets/line2-b0779cc1.png) center 80% / 100% auto no-repeat" }, children: [
   renderTeamSec("Our Leads", ourLeadsData),
   renderTeamSec("Our IG Leads", ourIgLeadsData),
   renderTeamSec("Our Sub Leads", ourSubLeadsData),
