@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" width="800" height="1000">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#C5CAE9" />
+      <stop offset="50%" stop-color="#B388FF" />
+      <stop offset="100%" stop-color="#D1C4E9" />
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000" flood-opacity="0.15"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="1000" fill="url(#bg)" />
+
+  <!-- Top Header / College Crest Placeholder -->
+  <g transform="translate(400, 70)" text-anchor="middle">
+    <!-- College Crest Shield -->
+    <path d="M-25,-30 L25,-30 L25,10 C25,25 0,35 0,35 C0,35 -25,25 -25,10 Z" fill="#1A237E" stroke="#FFD54F" stroke-width="2"/>
+    <text x="0" y="-5" fill="#FFF" font-family="sans-serif" font-weight="bold" font-size="12" text-anchor="middle">MBC</text>
+
+    <!-- College Title -->
+    <text x="0" y="55" fill="#1A237E" font-family="serif" font-weight="bold" font-size="22" letter-spacing="1">MAR BASELIOS CHRISTIAN</text>
+    <text x="0" y="78" fill="#3F51B5" font-family="sans-serif" font-weight="600" font-size="14" letter-spacing="2">COLLEGE OF ENGINEERING &amp; TECHNOLOGY</text>
+    <text x="0" y="96" fill="#5C6BC0" font-family="sans-serif" font-size="11" letter-spacing="3">KUTTIKKANAM, PEERMADE</text>
+  </g>
+
+  <!-- Leaderboard Strip -->
+  <g transform="translate(50, 200)">
+    <rect width="700" height="50" rx="6" fill="#E8EAF6" fill-opacity="0.9" />
+    <text x="30" y="20" fill="#7986CB" font-family="sans-serif" font-size="11" font-weight="bold">Rank</text>
+    <text x="200" y="20" fill="#7986CB" font-family="sans-serif" font-size="11" font-weight="bold">Name</text>
+    <text x="670" y="20" fill="#7986CB" font-family="sans-serif" font-size="11" font-weight="bold" text-anchor="end">Monthly Karma</text>
+
+    <line x1="20" y1="26" x2="680" y2="26" stroke="#C5CAE9" stroke-width="1" />
+
+    <text x="30" y="42" fill="#1A237E" font-family="sans-serif" font-size="15" font-weight="bold">4</text>
+    <text x="200" y="42" fill="#1A237E" font-family="sans-serif" font-size="15" font-weight="bold">MBC</text>
+    <text x="670" y="42" fill="#1A237E" font-family="sans-serif" font-size="15" font-weight="bold" text-anchor="end">32,400</text>
+  </g>
+
+  <!-- Main Hero Graphic -->
+  <g transform="translate(400, 380)" text-anchor="middle">
+    <!-- Top 4 Cursive -->
+    <text x="-30" y="20" fill="#4A148C" font-family="Georgia, serif" font-style="italic" font-weight="bold" font-size="110" letter-spacing="-2">Top 4</text>
+    
+    <!-- Monthly Bold -->
+    <text x="0" y="140" fill="#0D47A1" font-family="Impact, Arial Black, sans-serif" font-size="115" letter-spacing="2">Monthly</text>
+    <line x1="-280" y1="155" x2="280" y2="155" stroke="#0D47A1" stroke-width="12" stroke-linecap="round"/>
+
+    <!-- KARMA MINING Bold -->
+    <text x="0" y="250" fill="#0D47A1" font-family="Impact, Arial Black, sans-serif" font-size="80" letter-spacing="1">KARMA MINING</text>
+    <line x1="-290" y1="265" x2="290" y2="265" stroke="#0D47A1" stroke-width="10" stroke-linecap="round"/>
+  </g>
+
+  <!-- Taped September Banner -->
+  <g transform="translate(400, 720)" text-anchor="middle" filter="url(#shadow)">
+    <!-- Tape Left -->
+    <rect x="-240" y="-35" width="45" height="25" fill="#E0D7C6" fill-opacity="0.8" transform="rotate(-12 -220 -20)" />
+    <!-- Tape Right -->
+    <rect x="195" y="-35" width="45" height="25" fill="#E0D7C6" fill-opacity="0.8" transform="rotate(15 220 -20)" />
+
+    <!-- Paper Strip -->
+    <polygon points="-220,-20 220,-25 225,35 -215,40" fill="#F5F5F5" />
+    <text x="0" y="18" fill="#311B92" font-family="Arial Black, Impact, sans-serif" font-weight="900" font-size="44" letter-spacing="4">SEPTEMBER</text>
+  </g>
+
+  <!-- Bottom Branding -->
+  <g transform="translate(400, 860)" text-anchor="middle">
+    <text x="0" y="0" fill="#6A1B9A" font-family="sans-serif" font-weight="bold" font-size="42" letter-spacing="2">μLearn</text>
+    <text x="0" y="25" fill="#7E57C2" font-family="sans-serif" font-weight="600" font-size="20" letter-spacing="6">MBCCET</text>
+
+    <!-- Pill Badge -->
+    <rect x="-110" y="45" width="220" height="36" rx="18" fill="none" stroke="#4A148C" stroke-width="2" />
+    <text x="0" y="68" fill="#4A148C" font-family="sans-serif" font-weight="600" font-size="15" letter-spacing="1">mulearn.mbccet</text>
+  </g>
+</svg>
