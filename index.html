@@ -6,7 +6,7 @@
     <title>MuLearn MBCCET</title>
     <link rel="icon" type="image/x-icon" href="/assets/favicon-f0862b1c.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover" />
-    <meta name="color-scheme" content="light dark" />
+    <meta name="color-scheme" content="light" />
     <style>
         :root {
             --bg-primary: #ffffff;
@@ -23,25 +23,6 @@
             --nav-bg: rgba(255, 255, 255, 0.85);
             --nav-text: #000000;
             --hero-bg: linear-gradient(180deg, #c18bf5 0%, #ffffff 68.23%);
-        }
-
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --bg-primary: #121216;
-                --bg-secondary: #1a1a22;
-                --text-primary: #f0f0f5;
-                --text-secondary: #d0d0dc;
-                --text-muted: #a0a0b2;
-                --accent-purple: #bb72ff;
-                --accent-light: #4a2777;
-                --card-bg: #1c1c24;
-                --card-border: rgba(187, 114, 255, 0.3);
-                --card-shadow: 0 4px 25px rgba(0, 0, 0, 0.4);
-                --overlay-bg: #121216;
-                --nav-bg: rgba(18, 18, 22, 0.85);
-                --nav-text: #ffffff;
-                --hero-bg: linear-gradient(180deg, #2d1645 0%, #121216 68.23%);
-            }
         }
 
         html {
@@ -192,16 +173,6 @@
             hideOverlay();
         });
         setTimeout(hideOverlay, 3000);
-
-        // Listen for OS / Chrome Dark mode preference changes
-        if (window.matchMedia) {
-            const darkModeQuery = window.matchMedia('(prefers-color-scheme: dark)');
-            function handleThemeChange(e) {
-                document.documentElement.setAttribute('data-theme', e.matches ? 'dark' : 'light');
-            }
-            darkModeQuery.addEventListener('change', handleThemeChange);
-            handleThemeChange(darkModeQuery);
-        }
     </script>
   <script type="module" crossorigin src="/assets/index-957fd289.js"></script>
     <link rel="stylesheet" href="/assets/index-959298b4.css?v=5">
