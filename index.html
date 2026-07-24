@@ -78,8 +78,8 @@
     </style>
 
     <!-- Main CSS: loaded non-blocking using media trick, then switched to all -->
-    <link rel="preload" as="style" href="/assets/index-959298b4.css?v=9" onload="this.onload=null;this.rel='stylesheet'" />
-    <noscript><link rel="stylesheet" href="/assets/index-959298b4.css?v=9" /></noscript>
+    <link rel="preload" as="style" href="/assets/index-959298b4.css?v=10" onload="this.onload=null;this.rel='stylesheet'" />
+    <noscript><link rel="stylesheet" href="/assets/index-959298b4.css?v=10" /></noscript>
 
     <!-- React app module (non-blocking by nature of type=module) -->
     <script type="module" crossorigin src="/assets/index-957fd289.js"></script>
@@ -209,6 +209,26 @@
     })();
     </script>
 
+
+    <!-- Overlay fade-out script -->
+    <script>
+    (function () {
+        function hideOverlay() {
+            var overlay = document.getElementById('overlay');
+            if (!overlay) return;
+            overlay.style.transition = 'opacity 0.4s ease';
+            overlay.style.opacity = '0';
+            setTimeout(function() { overlay.style.display = 'none'; }, 400);
+        }
+        if (document.readyState === 'complete') {
+            hideOverlay();
+        } else {
+            window.addEventListener('load', hideOverlay);
+            setTimeout(hideOverlay, 1500);
+        }
+    })();
+    </script>
 </body>
+
 
 </html>
