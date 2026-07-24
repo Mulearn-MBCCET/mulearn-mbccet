@@ -590,7 +590,23 @@ renderTeamSec = (title, members) => u.jsxs("div", {
         style: { display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center", width: "210px" },
         children: [
           u.jsx("div", {
-            children: u.jsx("img", { className: N.teamImageIndividual, src: m.image, alt: m.name, loading: "lazy", style: { width: "11rem", height: "11rem", borderRadius: "50%", objectFit: "cover", objectPosition: "center 15%" } })
+            children: u.jsx("img", {
+              className: N.teamImageIndividual,
+              src: m.image,
+              alt: m.name,
+              loading: "lazy",
+              style: { width: "11rem", height: "11rem", borderRadius: "50%", objectFit: "cover", objectPosition: "center 15%" },
+              onError: (e) => {
+                const img = e.currentTarget;
+                if (!img.dataset.retried) {
+                  img.dataset.retried = "1";
+                  img.src = m.image.replace("/mulearn-mbccet assets/", "/mulearn-mbccet%20assets/");
+                } else if (img.dataset.retried === "1") {
+                  img.dataset.retried = "2";
+                  img.src = "/assets" + m.image;
+                }
+              }
+            })
           }),
           u.jsxs("div", { className: N.teamNameDesignation, style: { marginTop: "12px" }, children: [
             u.jsx("div", { className: N.teamMemberName, style: { fontSize: "1.2rem", fontWeight: "700", color: "#000" }, children: m.name }),
