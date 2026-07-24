@@ -5,14 +5,71 @@
     <meta charset="UTF-8" />
     <title>MuLearn MBCCET</title>
     <link rel="icon" type="image/x-icon" href="/assets/favicon-f0862b1c.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
     <style>
+        :root {
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8f9fa;
+            --text-primary: #1e1e24;
+            --text-secondary: #424242;
+            --text-muted: #757575;
+            --accent-purple: #ae59ff;
+            --accent-light: #c18bf5;
+            --card-bg: #ffffff;
+            --card-border: rgba(174, 89, 255, 0.2);
+            --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            --overlay-bg: #ffffff;
+            --nav-bg: rgba(255, 255, 255, 0.85);
+            --nav-text: #000000;
+            --hero-bg: linear-gradient(180deg, #c18bf5 0%, #ffffff 68.23%);
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-primary: #121216;
+                --bg-secondary: #1a1a22;
+                --text-primary: #f0f0f5;
+                --text-secondary: #d0d0dc;
+                --text-muted: #a0a0b2;
+                --accent-purple: #bb72ff;
+                --accent-light: #4a2777;
+                --card-bg: #1c1c24;
+                --card-border: rgba(187, 114, 255, 0.3);
+                --card-shadow: 0 4px 25px rgba(0, 0, 0, 0.4);
+                --overlay-bg: #121216;
+                --nav-bg: rgba(18, 18, 22, 0.85);
+                --nav-text: #ffffff;
+                --hero-bg: linear-gradient(180deg, #2d1645 0%, #121216 68.23%);
+            }
+        }
+
+        html, body {
+            width: 100%;
+            max-width: 100%;
+            overflow-x: hidden;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        #root {
+            width: 100%;
+            max-width: 100%;
+            overflow-x: hidden;
+            min-height: 100vh;
+            min-height: 100dvh;
+        }
+
         #overlay {
             width: 100vw;
             height: 100vh;
+            height: 100dvh;
             position: fixed;
             top: 0;
-            background-color: #fff;
+            background-color: var(--overlay-bg);
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -20,6 +77,7 @@
             z-index: 9999;
             left: 0;
             gap: 10px;
+            transition: background-color 0.3s ease;
         }
 
         #overlay::-webkit-scrollbar {
@@ -30,6 +88,7 @@
         #overlay img {
             width: 300px;
             height: auto;
+            max-width: 80vw;
         }
 
         .progress {
@@ -37,7 +96,7 @@
             height: 16.8px;
             border-radius: 16.8px;
             background: repeating-linear-gradient(135deg, #FBBA16 0 8.4px, rgba(251, 186, 22, 0.5) 0 16.8px) left/0% 100% no-repeat,
-                repeating-linear-gradient(135deg, rgba(71, 75, 255, 0.2) 0 8.4px, rgba(71, 75, 255, 0.1) 0 16.8px) left/100% 100%;
+                repeating-linear-gradient(135deg, rgba(111, 111, 255, 0.4) 0 8.4px, rgba(111, 111, 255, 0.2) 0 16.8px) left/100% 100%;
             animation: progress-p43u5e 3s infinite;
         }
 
@@ -52,12 +111,22 @@
 
     <script>
         function hideOverlay() {
-            $('#overlay').hide();
+            $('#overlay').fadeOut(400);
         }
         $(window).on('load', function () {
             hideOverlay();
         });
         setTimeout(hideOverlay, 3000);
+
+        // Listen for OS / Chrome Dark mode preference changes
+        if (window.matchMedia) {
+            const darkModeQuery = window.matchMedia('(prefers-color-scheme: dark)');
+            function handleThemeChange(e) {
+                document.documentElement.setAttribute('data-theme', e.matches ? 'dark' : 'light');
+            }
+            darkModeQuery.addEventListener('change', handleThemeChange);
+            handleThemeChange(darkModeQuery);
+        }
     </script>
   <script type="module" crossorigin src="/assets/index-957fd289.js"></script>
     <link rel="stylesheet" href="/assets/index-959298b4.css?v=4">
@@ -74,7 +143,6 @@
     <script src="https://elfsightcdn.com/platform.js" async></script>
     <div class="elfsight-app-6c505118-d8fd-4d95-9582-f07055906939"
          data-elfsight-app-lazy></div>
-    
 </body>
 
 </html>
