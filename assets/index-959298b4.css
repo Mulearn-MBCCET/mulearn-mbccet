@@ -83,28 +83,30 @@ body {
   overflow-x: hidden;
 }
 
-/* Navbar viewport scaling & padding fixes */
+
+
+/* ============================================================
+   NAVBAR & MOBILE HAMBURGER MENU OVERRIDES
+   ============================================================ */
 ._navbarWrapper_1w7oa_1 {
-  box-sizing: border-box;
+  box-sizing: border-box !important;
   padding: 10px 20px !important;
-  max-width: 100vw;
-  overflow: hidden;
+  max-width: 100vw !important;
+  overflow: visible !important;
+  z-index: 99999 !important;
 }
 
 ._navbarRight_1w7oa_52 {
   padding: 0 10px !important;
-  gap: clamp(10px, 3vw, 40px) !important;
-  flex-shrink: 1;
 }
 
-._navbarRight_1w7oa_52>div {
-  gap: clamp(10px, 2.5vw, 35px) !important;
-  flex-wrap: nowrap;
+._navbarRight_1w7oa_52 > div {
+  gap: clamp(10px, 2vw, 30px) !important;
 }
 
-._navbarRight_1w7oa_52>button>a {
-  white-space: nowrap;
-  display: inline-block;
+._navbarRight_1w7oa_52 > button > a {
+  white-space: nowrap !important;
+  display: inline-block !important;
 }
 
 @media screen and (max-width: 900px) {
@@ -113,105 +115,34 @@ body {
   }
   ._navbarMobile_1w7oa_80 {
     display: flex !important;
-    flex-direction: row-reverse;
-    align-items: center;
-    padding: 0 15px !important;
+    align-items: center !important;
+    padding: 0 10px !important;
   }
 }
 
-/* Ensure images scale fluidly on desktop and mobile without horizontal overflow */
+/* Fluid responsive scaling for all images */
 img {
   max-width: 100%;
   height: auto;
 }
 
-/* Elfsight Instagram Widget alignment fix across viewports */
+/* Elfsight widget responsiveness */
 div[class*="elfsight-app"] {
-  width: 100% !important;
-  max-width: 1200px !important;
-  margin: 2rem auto !important;
-  display: flex !important;
-  justify-content: center !important;
-  box-sizing: border-box !important;
-  padding: 0 1rem !important;
-  overflow: hidden !important;
+  max-width: 100% !important;
+  overflow-x: hidden !important;
 }
 
 div[class*="elfsight-app"] > iframe,
 div[class*="elfsight-app"] > div {
-  width: 100% !important;
   max-width: 100% !important;
-  margin: 0 auto !important;
 }
 
-/* Dynamic Hero adjustments */
-._contentWraper_ibt8l_19 p {
-  width: min(80vw, 450px) !important;
-  font-size: clamp(1rem, 1.8vw, 1.3rem) !important;
-}
-
-/* Team section responsive scaling */
-._teamWrapper_5dw4z_1 {
-  max-width: 100vw;
-  overflow-x: hidden;
-}
-
-/* =====================================================
-   WCAG AA COLOR CONTRAST ACCESSIBILITY FIXES
-   All elements with white text on #ae59ff (purple) background:
-   #ae59ff / #ffffff = ratio 3.7 (FAIL, needs 4.5:1)
-   Fix: Use dark text #1a0030 instead (ratio ~12.5:1)
-   ===================================================== */
-
-/* ExploreLCC section link */
-._contentWrapper_xmyi4_20 > a {
-  color: #1a0030 !important;
-}
-
-/* Connect section - Discord button (white on purple) */
-._discord_183ru_61 {
-  color: #1a0030 !important;
-}
-
-/* Connect section - Whatsapp button (purple on white) - already ok, but ensure bold */
-._Whatsapp_183ru_66 {
-  color: #7a1aae !important;
-  font-weight: 700 !important;
-}
-
-/* Footer - all text and links on #ae59ff background */
-._FooterWrapper_bv94u_1 {
-  color: #1a0030 !important;
-}
-
-._topFooter_bv94u_13 p,
-._topFooter_bv94u_13 a,
-._topFooter_bv94u_13 > div > a {
-  color: #1a0030 !important;
-}
-
-._socialMedia_bv94u_28 a {
-  color: #1a0030 !important;
-}
-
-._ptag_bv94u_53 p {
-  color: #1a0030 !important;
-}
-
-/* Reach us at email link */
-._topFooter_bv94u_13 a[href^="mailto"] {
-  color: #1a0030 !important;
-}
-
-/* =====================================================
-   MOBILE HAMBURGER MENU FIXES
-   Fix dropdown container cutoff so all 6 links + button display
-   ===================================================== */
+/* MOBILE HAMBURGER POPUP MENU FIX */
 ._navbarMobile_1w7oa_80 {
   position: relative !important;
   right: 0 !important;
   top: 0 !important;
-  padding: 0 15px !important;
+  z-index: 999999 !important;
 }
 
 ._navbarMobile_1w7oa_80 ._hamburger_1w7oa_118 {
@@ -221,52 +152,50 @@ div[class*="elfsight-app"] > div {
   background: none !important;
   border: none !important;
   outline: none !important;
-  padding: 8px !important;
+  padding: 6px !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-  position: relative !important;
-  right: 0 !important;
 }
 
 ._navbarMobile_1w7oa_80 > div {
-  position: absolute !important;
-  top: 50px !important;
+  position: fixed !important;
+  top: 60px !important;
   right: 15px !important;
-  background: rgba(15, 12, 30, 0.96) !important;
-  z-index: 99999 !important;
-  -webkit-backdrop-filter: blur(16px) !important;
-  backdrop-filter: blur(16px) !important;
+  width: 230px !important;
+  max-width: calc(100vw - 30px) !important;
+  background: rgba(15, 12, 30, 0.98) !important;
+  z-index: 9999999 !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  backdrop-filter: blur(20px) !important;
   border-radius: 16px !important;
   display: flex !important;
   flex-direction: column !important;
   align-items: center !important;
-  gap: 12px !important;
+  gap: 10px !important;
   height: auto !important;
-  min-height: fit-content !important;
   max-height: 85vh !important;
   overflow-y: auto !important;
-  width: 220px !important;
-  max-width: 80vw !important;
-  padding: 20px 16px !important;
-  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.15) !important;
+  padding: 18px 14px !important;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(255, 255, 255, 0.2) !important;
 }
 
 ._navbarMobile_1w7oa_80 > div > a {
   width: 100% !important;
   text-align: center !important;
-  padding: 4px 0 !important;
+  padding: 6px 0 !important;
+  display: block !important;
+  text-decoration: none !important;
 }
 
 ._navbarMobile_1w7oa_80 > div > a > p {
   color: #ffffff !important;
-  font-size: 18px !important;
+  font-size: 17px !important;
   font-weight: 600 !important;
   text-transform: capitalize !important;
   margin: 0 !important;
-  height: auto !important;
   line-height: 1.4 !important;
-  display: inline-block !important;
+  display: block !important;
 }
 
 ._navbarMobile_1w7oa_80 > div > a:hover > p {
@@ -274,21 +203,254 @@ div[class*="elfsight-app"] > div {
 }
 
 ._navbarMobile_1w7oa_80 > div > button {
-  margin-top: 8px !important;
+  margin-top: 6px !important;
   width: 100% !important;
   background: none !important;
   border: none !important;
+  padding: 0 !important;
 }
 
 ._navbarMobile_1w7oa_80 > div > button > a {
   display: block !important;
-  padding: 10px 18px !important;
+  padding: 10px 16px !important;
   background: linear-gradient(135deg, #6f6fff, #9042eb) !important;
   color: #ffffff !important;
-  border-radius: 8px !important;
-  font-size: 16px !important;
+  border-radius: 10px !important;
+  font-size: 15px !important;
   font-weight: 700 !important;
   text-align: center !important;
   text-decoration: none !important;
   box-shadow: 0 4px 14px rgba(111, 111, 255, 0.4) !important;
+}
+
+
+/* ============================================================
+   1:1 INSTAGRAM POSTS WIDGET (MATCHES YOUTUBE WIDGET 1:1)
+   ============================================================ */
+.ig-widget-container {
+  width: 100%;
+  max-width: 1000px;
+  margin: 2.5rem auto;
+  padding: 24px;
+  background: linear-gradient(145deg, #121726, #1a2135);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 20px;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.5);
+  font-family: inherit;
+  box-sizing: border-box;
+}
+
+.ig-widget-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  margin-bottom: 22px;
+}
+
+.ig-profile-info {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.ig-avatar-ring {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  padding: 3px;
+  background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.ig-avatar-img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: #121726;
+  object-fit: contain;
+  padding: 2px;
+}
+
+.ig-profile-details h4 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 700;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.ig-profile-details p {
+  margin: 2px 0 4px;
+  font-size: 13px;
+  color: #a0aec0;
+}
+
+.ig-stats-row {
+  display: flex;
+  gap: 12px;
+  font-size: 12px;
+  color: #cbd5e1;
+  font-weight: 600;
+}
+
+.ig-follow-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background: linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c);
+  color: #ffffff !important;
+  font-weight: 700;
+  font-size: 14px;
+  border-radius: 12px;
+  text-decoration: none !important;
+  box-shadow: 0 4px 15px rgba(225, 48, 108, 0.4);
+  transition: all 0.3s ease;
+}
+
+.ig-follow-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(225, 48, 108, 0.6);
+}
+
+.ig-posts-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+@media (max-width: 768px) {
+  .ig-posts-grid {
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 16px;
+  }
+  .ig-widget-container {
+    padding: 18px;
+    margin: 1.5rem 10px;
+  }
+}
+
+.ig-post-card {
+  position: relative;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #0f131f;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: all 0.3s ease;
+  text-decoration: none !important;
+  display: flex;
+  flex-direction: column;
+}
+
+.ig-post-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+  border-color: rgba(225, 48, 108, 0.5);
+}
+
+.ig-post-image-box {
+  width: 100%;
+  aspect-ratio: 1 / 1; /* 1:1 SQUARE ASPECT RATIO */
+  position: relative;
+  overflow: hidden;
+  background: #181f30;
+}
+
+.ig-post-image-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.ig-post-card:hover .ig-post-image-box img {
+  transform: scale(1.08);
+}
+
+.ig-post-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(15, 19, 31, 0.85);
+  backdrop-filter: blur(4px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 16px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  text-align: center;
+}
+
+.ig-post-card:hover .ig-post-overlay {
+  opacity: 1;
+}
+
+.ig-overlay-icon {
+  width: 32px;
+  height: 32px;
+  fill: #e1306c;
+}
+
+.ig-overlay-title {
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 700;
+  margin: 0;
+  line-height: 1.3;
+}
+
+.ig-overlay-stats {
+  display: flex;
+  gap: 12px;
+  color: #e2e8f0;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.ig-view-btn {
+  padding: 6px 14px;
+  background: #e1306c;
+  color: #ffffff !important;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 700;
+  text-decoration: none !important;
+  margin-top: 4px;
+}
+
+.ig-post-caption-bar {
+  padding: 12px 14px;
+  background: #141a29;
+}
+
+.ig-post-caption-title {
+  color: #f1f5f9;
+  font-size: 14px;
+  font-weight: 700;
+  margin: 0 0 4px 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ig-post-caption-text {
+  color: #94a3b8;
+  font-size: 12px;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  line-height: 1.4;
 }

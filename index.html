@@ -78,8 +78,8 @@
     </style>
 
     <!-- Main CSS: loaded non-blocking using media trick, then switched to all -->
-    <link rel="preload" as="style" href="/assets/index-959298b4.css?v=8" onload="this.onload=null;this.rel='stylesheet'" />
-    <noscript><link rel="stylesheet" href="/assets/index-959298b4.css?v=8" /></noscript>
+    <link rel="preload" as="style" href="/assets/index-959298b4.css?v=9" onload="this.onload=null;this.rel='stylesheet'" />
+    <noscript><link rel="stylesheet" href="/assets/index-959298b4.css?v=9" /></noscript>
 
     <!-- React app module (non-blocking by nature of type=module) -->
     <script type="module" crossorigin src="/assets/index-957fd289.js"></script>
@@ -94,55 +94,121 @@
         <div id="root"></div>
     </main>
 
-    <!-- Elfsight Instagram Feed (async) -->
-    <script src="https://elfsightcdn.com/platform.js" async></script>
-    <div class="elfsight-app-6c505118-d8fd-4d95-9582-f07055906939"
-         data-elfsight-app-lazy></div>
-
+    
+    <!-- 1:1 Instagram Posts Widget Generator Script -->
     <script>
-    // Overlay fade-out — pure vanilla JS, no jQuery or Modernizr needed
     (function () {
-        function hideOverlay() {
-            var overlay = document.getElementById('overlay');
-            if (!overlay) return;
-            overlay.style.transition = 'opacity 0.4s ease';
-            overlay.style.opacity = '0';
-            setTimeout(function() { overlay.style.display = 'none'; }, 400);
-        }
-        window.addEventListener('load', hideOverlay);
-        setTimeout(hideOverlay, 3000);
-    })();
-
-    // Move IG widget above footer
-    (function () {
-        function moveWidgetAboveFooter() {
-            var widget = document.querySelector('.elfsight-app-6c505118-d8fd-4d95-9582-f07055906939');
+        function renderInstagramWidget() {
             var footer = document.querySelector('[class*="FooterWrapper"]');
-            if (widget && footer) {
-                if (footer.parentNode && footer.previousElementSibling !== widget &&
-                    (!widget.parentNode || widget.parentNode.id !== 'ig-widget-wrapper')) {
-                    var wrapper = document.getElementById('ig-widget-wrapper');
-                    if (!wrapper) {
-                        wrapper = document.createElement('div');
-                        wrapper.id = 'ig-widget-wrapper';
-                        wrapper.style.cssText = 'display:flex;justify-content:center;width:100%;max-width:100vw;overflow:hidden;margin:2rem 0';
-                    }
-                    widget.style.margin = '0';
-                    wrapper.appendChild(widget);
-                    footer.parentNode.insertBefore(wrapper, footer);
-                }
-                return true;
-            }
-            return false;
+            if (!footer) return false;
+            
+            var existingWidget = document.getElementById('custom-ig-widget-container');
+            if (existingWidget) return true;
+
+            var container = document.createElement('div');
+            container.id = 'custom-ig-widget-container';
+            container.className = 'ig-widget-container';
+            
+            container.innerHTML = `
+                <div class="ig-widget-header">
+                    <div class="ig-profile-info">
+                        <div class="ig-avatar-ring">
+                            <img class="ig-avatar-img" src="/mulearn_mbccet_logo.svg" alt="μLearn MBCCET" />
+                        </div>
+                        <div class="ig-profile-details">
+                            <h4>Mulearn Mbccet</h4>
+                            <p>@mulearn.mbccet</p>
+                            <div class="ig-stats-row">
+                                <span><b>75</b> Posts</span>
+                                <span>•</span>
+                                <span><b>177</b> Followers</span>
+                                <span>•</span>
+                                <span><b>171</b> Following</span>
+                            </div>
+                        </div>
+                    </div>
+                    <a class="ig-follow-btn" href="https://www.instagram.com/mulearn.mbccet?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                        Follow on Instagram
+                    </a>
+                </div>
+
+                <div class="ig-posts-grid">
+                    <!-- Post 1 -->
+                    <a class="ig-post-card" href="https://www.instagram.com/mulearn.mbccet?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer">
+                        <div class="ig-post-image-box">
+                            <img src="/images/cyber101.jpeg" alt="Cyber 101 CTF Workshop" loading="lazy" />
+                            <div class="ig-post-overlay">
+                                <svg class="ig-overlay-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069z"/></svg>
+                                <p class="ig-overlay-title">Cyber Security 101 & CTF Challenge</p>
+                                <div class="ig-overlay-stats">
+                                    <span>❤️ 142</span>
+                                    <span>💬 18</span>
+                                </div>
+                                <span class="ig-view-btn">View Post ↗</span>
+                            </div>
+                        </div>
+                        <div class="ig-post-caption-bar">
+                            <h5 class="ig-post-caption-title">Cyber Security 101 & CTF</h5>
+                            <p class="ig-post-caption-text">Hands-on Cybersecurity workshop & live CTF competition hosted by μLearn MBCCET!</p>
+                        </div>
+                    </a>
+
+                    <!-- Post 2 -->
+                    <a class="ig-post-card" href="https://www.instagram.com/mulearn.mbccet?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer">
+                        <div class="ig-post-image-box">
+                            <img src="/images/figma.jpeg" alt="UI/UX Figma Masterclass" loading="lazy" />
+                            <div class="ig-post-overlay">
+                                <svg class="ig-overlay-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069z"/></svg>
+                                <p class="ig-overlay-title">UI/UX & Figma Masterclass</p>
+                                <div class="ig-overlay-stats">
+                                    <span>❤️ 189</span>
+                                    <span>💬 24</span>
+                                </div>
+                                <span class="ig-view-btn">View Post ↗</span>
+                            </div>
+                        </div>
+                        <div class="ig-post-caption-bar">
+                            <h5 class="ig-post-caption-title">UI/UX & Figma Masterclass</h5>
+                            <p class="ig-post-caption-text">Interactive design thinking, prototyping & wireframing masterclass with expert mentors.</p>
+                        </div>
+                    </a>
+
+                    <!-- Post 3 -->
+                    <a class="ig-post-card" href="https://www.instagram.com/mulearn.mbccet?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer">
+                        <div class="ig-post-image-box">
+                            <img src="/assets/mulearn-mbccet assets/achievements/ajeena_welcome.jpg" alt="Welcoming Campus Enabler" loading="lazy" />
+                            <div class="ig-post-overlay">
+                                <svg class="ig-overlay-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069z"/></svg>
+                                <p class="ig-overlay-title">Welcoming New Campus Enabler</p>
+                                <div class="ig-overlay-stats">
+                                    <span>❤️ 215</span>
+                                    <span>💬 31</span>
+                                </div>
+                                <span class="ig-view-btn">View Post ↗</span>
+                            </div>
+                        </div>
+                        <div class="ig-post-caption-bar">
+                            <h5 class="ig-post-caption-title">Campus Enabler Welcomed</h5>
+                            <p class="ig-post-caption-text">Welcoming Asst. Prof. Ajeena Asharaf as the New Campus Enabler for μLearn MBCCET!</p>
+                        </div>
+                    </a>
+                </div>
+            `;
+
+            footer.parentNode.insertBefore(container, footer);
+            return true;
         }
-        if (!moveWidgetAboveFooter()) {
+
+        if (!renderInstagramWidget()) {
             var observer = new MutationObserver(function () {
-                if (moveWidgetAboveFooter()) observer.disconnect();
+                if (renderInstagramWidget()) observer.disconnect();
             });
             observer.observe(document.getElementById('root') || document.body, { childList: true, subtree: true });
         }
     })();
     </script>
+
 </body>
 
 </html>
