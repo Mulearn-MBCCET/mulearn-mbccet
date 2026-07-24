@@ -1,0 +1,8 @@
+{
+  "name": "MuLearn MBCCET",
+  "description": "MuLearn MBCCET campus chapter website",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
