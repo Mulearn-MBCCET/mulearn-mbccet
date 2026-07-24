@@ -549,36 +549,36 @@ $0 = "_gallery_kys51_1", F0 = "_row_kys51_12", O0 = "_imgContainer_kys51_16", Di
     ]
   });
 }, W0 = "_StatWrapper_1c1w8_1", B0 = "_contentDiv_1c1w8_15", U0 = "_leftContainer_1c1w8_26", V0 = "_rightContainer_1c1w8_52", tl = { StatWrapper: W0, contentDiv: B0, leftContainer: U0, rightContainer: V0 }, H0 = () => { const [e, t] = v.useState([0, 0, 0, 0]), n = 3, r = v.useRef(null), l = i => { if (!i) return !1; const o = i.getBoundingClientRect(); return o.top >= 0 && o.left >= 0 && o.bottom <= (window.innerHeight || document.documentElement.clientHeight) && o.right <= (window.innerWidth || document.documentElement.clientWidth) }; return v.useEffect(() => { const i = [M.statistics.studentsCount ?? 0, M.statistics.learningCircles ?? 0, M.statistics.InterestGroups ?? 0, M.statistics.karmaEarned ?? 0], o = () => { const c = setInterval(() => { t(d => d.map((h, g) => h < i[g] ? h + Math.ceil(i[g] / (n * 20)) : i[g])) }, 50); return () => clearInterval(c) }; let a; const s = new IntersectionObserver(c => { c[0].isIntersecting && (a = o()) }, { root: null, rootMargin: "0px", threshold: .5 }); return r.current && (l(r.current) ? a = o() : s.observe(r.current)), () => { a && a(), r.current && s.unobserve(r.current) } }, [M.statistics]), u.jsxs("div", { className: tl.StatWrapper, children: [u.jsx("h1", { children: "Our Statistics" }), u.jsxs("div", { className: tl.contentDiv, children: [u.jsx("div", { className: tl.leftContainer, ref: r, children: e.map((i, o) => u.jsxs("div", { children: [u.jsx("h3", { children: o === 3 ? `${i.toLocaleString()}+` : `${i}+` }), u.jsx("p", { children: o === 0 ? "STUDENTS" : o === 1 ? "LEARNING" : o === 2 ? "INTEREST" : "KARMA" }), u.jsx("p", { children: o === 0 ? "ENROLLED" : o === 1 ? "CIRCLES" : o === 2 ? "GROUPS" : "MINED" })] }, o)) }), u.jsxs("div", { className: tl.rightContainer, children: [u.jsx(Do, {}), u.jsxs("h2", { children: ["Rank:", M.statistics.rank] })] })] })] }) }, Q0 = "_exploreLCWrapper_xmyi4_1", K0 = "_imageWrapper_xmyi4_11", G0 = "_contentWrapper_xmyi4_20", $i = { exploreLCWrapper: Q0, imageWrapper: K0, contentWrapper: G0 }, Z0 = "/assets/explorelc-4a75ae1d.svg", Y0 = () => u.jsxs("div", { className: $i.exploreLCWrapper, children: [u.jsx("div", { className: $i.imageWrapper, children: u.jsx("img", { src: Z0, alt: "" }) }), u.jsxs("div", { className: $i.contentWrapper, children: [u.jsx("h1", { children: "Explore Learning Circles" }), u.jsx("p", { children: "An informal mechanism for bringing together learners who are interested in the same topic from across different fields and disciplines. A fantastic way to spend a small amount of time learning about new things with a group of people with same interests!" }), u.jsx("a", { target: "_blank", href: "https://app.mulearn.org/learning-circle", children: "Create/Join Learning Circles" })] })] }), X0 = "_teamWrapper_5dw4z_1", J0 = "_teamBodyWrapper_5dw4z_16", q0 = "_teamBgLineWrapper_5dw4z_22", b0 = "_teamMembersDetailsWrapper_5dw4z_44", e2 = "_team_5dw4z_1", t2 = "_teamImageIndividual_5dw4z_66", n2 = "_teamNameDesignation_5dw4z_75", r2 = "_teamMemberName_5dw4z_84", l2 = "_teamMemberDesignation_5dw4z_94", i2 = "_team1Img_5dw4z_106", o2 = "_team1_5dw4z_106", a2 = "_team2_5dw4z_122", s2 = "_team3_5dw4z_129", u2 = "_team4_5dw4z_136", c2 = "_team5_5dw4z_143", d2 = "_team6_5dw4z_150", f2 = "_team7_5dw4z_157", p2 = "_team8_5dw4z_163", m2 = "_team9_5dw4z_170", N = { teamWrapper: X0, teamBodyWrapper: J0, teamBgLineWrapper: q0, teamMembersDetailsWrapper: b0, team: e2, teamImageIndividual: t2, teamNameDesignation: n2, teamMemberName: r2, teamMemberDesignation: l2, team1Img: i2, team1: o2, team2: a2, team3: s2, team4: u2, team5: c2, team6: d2, team7: f2, team8: p2, team9: m2 }, Fi = "/assets/line-2b02aac6.png", tu = "/assets/line2-b0779cc1.png", ourLeadsData = [
-  { name: "Prof. Ajeena Ashraf", designation: "Campus Enabler", image: "/mulearn-mbccet assets/achievements/enabeler.jpg" },
-  { name: "V S Geethu", designation: "Campus Lead", image: "/mulearn-mbccet assets/team/geethu.jpeg" },
-  { name: "Jini Shiju", designation: "Campus Co-Lead", image: "/mulearn-mbccet assets/team/jini.jpeg" },
-  { name: "Joyanna B", designation: "Co-Lead", image: "/mulearn-mbccet assets/team/joyanna.jpeg" },
-  { name: "Irin Ann Shaji", designation: "Operation Team Lead", image: "/mulearn-mbccet assets/team/irin.jpeg" },
-  { name: "Abin Mathew Thomas", designation: "Tech Lead", image: "/mulearn-mbccet assets/team/abin.jpeg" },
-  { name: "Adwaith Abhi", designation: "Media Lead", image: "/mulearn-mbccet assets/team/adwaith.jpeg" },
-  { name: "Priyanka", designation: "Design Lead", image: "/mulearn-mbccet assets/team/priyanka.jpeg" }
+  { name: "Prof. Ajeena Ashraf", designation: "Campus Enabler", image: "/mulearn-mbccet-assets/achievements/enabeler.jpg" },
+  { name: "V S Geethu", designation: "Campus Lead", image: "/mulearn-mbccet-assets/team/geethu.jpeg" },
+  { name: "Jini Shiju", designation: "Campus Co-Lead", image: "/mulearn-mbccet-assets/team/jini.jpeg" },
+  { name: "Joyanna B", designation: "Co-Lead", image: "/mulearn-mbccet-assets/team/joyanna.jpeg" },
+  { name: "Irin Ann Shaji", designation: "Operation Team Lead", image: "/mulearn-mbccet-assets/team/irin.jpeg" },
+  { name: "Abin Mathew Thomas", designation: "Tech Lead", image: "/mulearn-mbccet-assets/team/abin.jpeg" },
+  { name: "Adwaith Abhi", designation: "Media Lead", image: "/mulearn-mbccet-assets/team/adwaith.jpeg" },
+  { name: "Priyanka", designation: "Design Lead", image: "/mulearn-mbccet-assets/team/priyanka.jpeg" }
 ],
 ourIgLeadsData = [
-  { name: "Jubit A Jacob", designation: "Space IG Lead", image: "/mulearn-mbccet assets/team/jubit.jpeg" },
-  { name: "Anandhu Krishnan", designation: "Comics IG Lead", image: "/mulearn-mbccet assets/team/anandhu.jpeg" },
-  { name: "Abin Mathew Thomas", designation: "Cybersecurity IG Lead", image: "/mulearn-mbccet assets/team/abin.jpeg" },
-  { name: "Joyanna B", designation: "HR IG Lead", image: "/mulearn-mbccet assets/team/joyanna.jpeg" },
-  { name: "Reuben Sam Philip", designation: "Web IG Lead", image: "/mulearn-mbccet assets/team/reuben.jpeg" },
-  { name: "Adwaith Abhi", designation: "Muv IG Lead", image: "/mulearn-mbccet assets/team/adwaith.jpeg" }
+  { name: "Jubit A Jacob", designation: "Space IG Lead", image: "/mulearn-mbccet-assets/team/jubit.jpeg" },
+  { name: "Anandhu Krishnan", designation: "Comics IG Lead", image: "/mulearn-mbccet-assets/team/anandhu.jpeg" },
+  { name: "Abin Mathew Thomas", designation: "Cybersecurity IG Lead", image: "/mulearn-mbccet-assets/team/abin.jpeg" },
+  { name: "Joyanna B", designation: "HR IG Lead", image: "/mulearn-mbccet-assets/team/joyanna.jpeg" },
+  { name: "Reuben Sam Philip", designation: "Web IG Lead", image: "/mulearn-mbccet-assets/team/reuben.jpeg" },
+  { name: "Adwaith Abhi", designation: "Muv IG Lead", image: "/mulearn-mbccet-assets/team/adwaith.jpeg" }
 ],
 ourSubLeadsData = [
-  { name: "Ann Mary Job", designation: "Tech Sub Lead", image: "/mulearn-mbccet assets/team/ann_mary.jpeg" },
-  { name: "Nelphy Anna Joji", designation: "Operation Team Sub Lead", image: "/mulearn-mbccet assets/team/nelphy.jpeg" },
-  { name: "Iwin Sajimon P", designation: "Tech Sub Lead", image: "/mulearn-mbccet assets/team/iwin.jpeg" },
-  { name: "Ansiya H", designation: "Design Sub Lead", image: "/mulearn-mbccet assets/team/ansiya.jpeg" },
-  { name: "Naveen Monachan", designation: "Media & Muv IG Sub Lead", image: "/mulearn-mbccet assets/team/naveen.jpeg" },
-  { name: "Niranjana P A", designation: "Operation Team Sub Lead", image: "/mulearn-mbccet assets/team/niranjana.jpeg" },
-  { name: "Rennees Biju", designation: "Media & Muv IG Sub Lead", image: "/mulearn-mbccet assets/team/rennees.jpeg" }
+  { name: "Ann Mary Job", designation: "Tech Sub Lead", image: "/mulearn-mbccet-assets/team/ann_mary.jpeg" },
+  { name: "Nelphy Anna Joji", designation: "Operation Team Sub Lead", image: "/mulearn-mbccet-assets/team/nelphy.jpeg" },
+  { name: "Iwin Sajimon P", designation: "Tech Sub Lead", image: "/mulearn-mbccet-assets/team/iwin.jpeg" },
+  { name: "Ansiya H", designation: "Design Sub Lead", image: "/mulearn-mbccet-assets/team/ansiya.jpeg" },
+  { name: "Naveen Monachan", designation: "Media & Muv IG Sub Lead", image: "/mulearn-mbccet-assets/team/naveen.jpeg" },
+  { name: "Niranjana P A", designation: "Operation Team Sub Lead", image: "/mulearn-mbccet-assets/team/niranjana.jpeg" },
+  { name: "Rennees Biju", designation: "Media & Muv IG Sub Lead", image: "/mulearn-mbccet-assets/team/rennees.jpeg" }
 ],
 ourInternsData = [
-  { name: "Reuben Sam Philip", designation: "Campus Management Zonal Lead & Intern", image: "/mulearn-mbccet assets/team/reuben.jpeg" },
-  { name: "Gayathri S", designation: "Civil IG Lead", image: "/mulearn-mbccet assets/team/gayathri.jpeg" },
-  { name: "Nandhana P B", designation: "Civil IG Sub Lead", image: "/mulearn-mbccet assets/team/nandhana.jpeg" }
+  { name: "Reuben Sam Philip", designation: "Campus Management Zonal Lead & Intern", image: "/mulearn-mbccet-assets/team/reuben.jpeg" },
+  { name: "Gayathri S", designation: "Civil IG Lead", image: "/mulearn-mbccet-assets/team/gayathri.jpeg" },
+  { name: "Nandhana P B", designation: "Civil IG Sub Lead", image: "/mulearn-mbccet-assets/team/nandhana.jpeg" }
 ],
 renderTeamSec = (title, members) => u.jsxs("div", {
   style: { display: "flex", flexDirection: "column", alignItems: "center", width: "100%", marginBottom: "60px" },
@@ -600,10 +600,7 @@ renderTeamSec = (title, members) => u.jsxs("div", {
                 const img = e.currentTarget;
                 if (!img.dataset.retried) {
                   img.dataset.retried = "1";
-                  img.src = m.image.replace("/mulearn-mbccet assets/", "/mulearn-mbccet%20assets/");
-                } else if (img.dataset.retried === "1") {
-                  img.dataset.retried = "2";
-                  img.src = "/assets" + m.image;
+                  img.src = m.image.replace("/mulearn-mbccet-assets/", "/assets/");
                 }
               }
             })
