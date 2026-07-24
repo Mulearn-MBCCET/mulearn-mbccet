@@ -119,26 +119,30 @@
             }
         }
 
-        /* Elfsight Instagram Widget Full-Width Viewport Fitting */
+        /* Elfsight Instagram Widget Centering above Footer */
         .elfsight-app-6c505118-d8fd-4d95-9582-f07055906939,
         div[class*="elfsight-app"] {
             width: 100% !important;
-            max-width: 100vw !important;
-            margin: 2rem 0 !important;
+            max-width: 1200px !important;
+            margin: 3rem auto 2rem auto !important;
             display: flex !important;
             justify-content: center !important;
             align-items: center !important;
             box-sizing: border-box !important;
-            padding: 0 1rem !important;
+            padding: 0 1.5rem !important;
             clear: both !important;
+            float: none !important;
         }
 
         div[class*="elfsight-app"] > iframe,
         div[class*="elfsight-app"] > div,
-        div[class*="elfsight-app"] iframe {
+        div[class*="elfsight-app"] iframe,
+        .eapps-instagram-feed {
             width: 100% !important;
             max-width: 100% !important;
             margin: 0 auto !important;
+            display: flex !important;
+            justify-content: center !important;
         }
 
         #overlay {
@@ -221,6 +225,26 @@
     <script src="https://elfsightcdn.com/platform.js" async></script>
     <div class="elfsight-app-6c505118-d8fd-4d95-9582-f07055906939"
          data-elfsight-app-lazy></div>
+
+    <script>
+    (function () {
+      function moveWidgetAboveFooter() {
+        var widget = document.querySelector('.elfsight-app-6c505118-d8fd-4d95-9582-f07055906939');
+        var footer = document.querySelector('footer, [class*="FooterWrapper"], ._FooterWrapper_bv94u_1');
+        if (widget && footer && footer.previousElementSibling !== widget) {
+          footer.parentNode.insertBefore(widget, footer);
+          return true;
+        }
+        return false;
+      }
+      if (!moveWidgetAboveFooter()) {
+        var observer = new MutationObserver(function () {
+          if (moveWidgetAboveFooter()) observer.disconnect();
+        });
+        observer.observe(document.body, { childList: true, subtree: true });
+      }
+    })();
+    </script>
 </body>
 
 </html>
