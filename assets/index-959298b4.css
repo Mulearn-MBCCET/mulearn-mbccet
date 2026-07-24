@@ -156,4 +156,49 @@ div[class*="elfsight-app"] > div {
   overflow-x: hidden;
 }
 
+/* =====================================================
+   WCAG AA COLOR CONTRAST ACCESSIBILITY FIXES
+   All elements with white text on #ae59ff (purple) background:
+   #ae59ff / #ffffff = ratio 3.7 (FAIL, needs 4.5:1)
+   Fix: Use dark text #1a0030 instead (ratio ~12.5:1)
+   ===================================================== */
 
+/* ExploreLCC section link */
+._contentWrapper_xmyi4_20 > a {
+  color: #1a0030 !important;
+}
+
+/* Connect section - Discord button (white on purple) */
+._discord_183ru_61 {
+  color: #1a0030 !important;
+}
+
+/* Connect section - Whatsapp button (purple on white) - already ok, but ensure bold */
+._Whatsapp_183ru_66 {
+  color: #7a1aae !important;
+  font-weight: 700 !important;
+}
+
+/* Footer - all text and links on #ae59ff background */
+._FooterWrapper_bv94u_1 {
+  color: #1a0030 !important;
+}
+
+._topFooter_bv94u_13 p,
+._topFooter_bv94u_13 a,
+._topFooter_bv94u_13 > div > a {
+  color: #1a0030 !important;
+}
+
+._socialMedia_bv94u_28 a {
+  color: #1a0030 !important;
+}
+
+._ptag_bv94u_53 p {
+  color: #1a0030 !important;
+}
+
+/* Reach us at email link */
+._topFooter_bv94u_13 a[href^="mailto"] {
+  color: #1a0030 !important;
+}

@@ -3,10 +3,23 @@
 
 <head>
     <meta charset="UTF-8" />
-    <title>MuLearn MBCCET</title>
+    <title>MuLearn MBCCET – Student Community at Mar Baselios Christian College of Engineering & Technology</title>
+    <meta name="description" content="MuLearn MBCCET is the official campus chapter of MuLearn at Mar Baselios Christian College of Engineering & Technology, Peermade. Join us to build skills, earn karma, and grow together through learning circles, interest groups, and community events." />
     <link rel="icon" type="image/x-icon" href="/assets/favicon-f0862b1c.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover" />
     <meta name="color-scheme" content="light" />
+
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Non-blocking Google Fonts -->
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=Red+Hat+Text:wght@300;400;500;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=Red+Hat+Text:wght@300;400;500;600;700&display=swap" /></noscript>
+
+    <!-- Preload the LCP image -->
+    <link rel="preload" as="image" href="/assets/homeimg-0bce5ad0.svg" fetchpriority="high" />
+
     <style>
 
         /* Elfsight Instagram Widget Layout & Centering */
@@ -70,20 +83,28 @@
             }
         }
     </style>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js"></script>
+
+    <!-- Deferred scripts to avoid render blocking -->
+    <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js"></script>
 
     <script>
+        // Wait for jQuery to be available before using it
         function hideOverlay() {
-            $('#overlay').fadeOut(400);
+            var overlay = document.getElementById('overlay');
+            if (overlay) {
+                if (typeof $ !== 'undefined') {
+                    $('#overlay').fadeOut(400);
+                } else {
+                    overlay.style.display = 'none';
+                }
+            }
         }
-        $(window).on('load', function () {
-            hideOverlay();
-        });
+        window.addEventListener('load', hideOverlay);
         setTimeout(hideOverlay, 3000);
     </script>
   <script type="module" crossorigin src="/assets/index-957fd289.js"></script>
-    <link rel="stylesheet" href="/assets/index-959298b4.css?v=6">
+    <link rel="stylesheet" href="/assets/index-959298b4.css?v=7">
 </head>
 
 <body>
@@ -91,7 +112,9 @@
         <div class="progress"></div>
     </div>
 
-    <div id="root"></div>
+    <main>
+        <div id="root"></div>
+    </main>
 
     <!-- Elfsight Instagram Feed -->
     <script src="https://elfsightcdn.com/platform.js" async></script>
