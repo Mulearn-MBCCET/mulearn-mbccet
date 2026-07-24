@@ -1,0 +1,7 @@
+# Temporary & Dev Scripts
+*.py
+*.txt
+*.har
+extracted/
+.vercel
+node_modules/
