@@ -8,23 +8,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover" />
     <meta name="color-scheme" content="light" />
     <style>
-        :root {
-            --bg-primary: #ffffff;
-            --bg-secondary: #f8f9fa;
-            --text-primary: #1e1e24;
-            --text-secondary: #424242;
-            --text-muted: #757575;
-            --accent-purple: #ae59ff;
-            --accent-light: #c18bf5;
-            --card-bg: #ffffff;
-            --card-border: rgba(174, 89, 255, 0.2);
-            --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-            --overlay-bg: #ffffff;
-            --nav-bg: rgba(255, 255, 255, 0.85);
-            --nav-text: #000000;
-            --hero-bg: linear-gradient(180deg, #c18bf5 0%, #ffffff 68.23%);
-        }
-
         html {
             font-size: clamp(14px, 1vw + 4px, 18px);
             width: 100%;
@@ -38,9 +21,6 @@
             overflow-x: hidden;
             margin: 0;
             padding: 0;
-            background-color: var(--bg-primary);
-            color: var(--text-primary);
-            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
         #root, .appWrapper {
@@ -125,7 +105,7 @@
             height: 100dvh;
             position: fixed;
             top: 0;
-            background-color: var(--overlay-bg);
+            background-color: #fff;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -133,7 +113,6 @@
             z-index: 9999;
             left: 0;
             gap: 10px;
-            transition: background-color 0.3s ease;
         }
 
         #overlay::-webkit-scrollbar {
